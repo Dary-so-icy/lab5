@@ -1,10 +1,13 @@
 package collection;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import managers.Validatable;
 
 import java.util.Date;
 
-
+@Getter
+@AllArgsConstructor
 public class LabWork implements Validatable {
     private int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой

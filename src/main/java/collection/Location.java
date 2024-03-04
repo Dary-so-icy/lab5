@@ -1,5 +1,9 @@
 package collection;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@Getter
+@AllArgsConstructor
 public class Location {
     private Integer x; //Поле не может быть null
     private Float y; //Поле не может быть null

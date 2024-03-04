@@ -1,5 +1,10 @@
 package collection;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public class Person {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Double height; //Поле может быть null, Значение поля должно быть больше 0
