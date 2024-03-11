@@ -1,7 +1,7 @@
 package commands;
 
 public class Help extends Command{
-    protected Help(String name, String description) {
+    public Help() {
         super("help", "вывести справку по доступным командам");
     }
 
