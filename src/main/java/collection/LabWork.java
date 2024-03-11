@@ -17,16 +17,6 @@ public class LabWork implements Validatable {
     private Difficulty difficulty; //Поле не может быть null
     private Person author; //Поле не может быть null
 
-    public LabWork(int id, String name, Coordinates coordinates, Date creationDate, float minimalPoint, Difficulty difficulty, Person author){
-        this.id = id;
-        this.name = name;
-        this.coordinates = coordinates;
-        this.creationDate = creationDate;
-        this.minimalPoint = minimalPoint;
-        this.difficulty = difficulty;
-        this.author = author;
-    }
-
     public LabWork(int id, String name, Coordinates coordinates, float minimalPoint, Difficulty difficulty, Person author){
         this(id, name, coordinates, new Date(), minimalPoint, difficulty, author);
     }
