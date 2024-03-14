@@ -2,7 +2,7 @@ package commands;
 
 public class History extends Command{
     public History(){
-        super("history", "ывести последние 14 команд(без их аргументов)");
+        super("history", "вывести последние 14 команд(без их аргументов)");
     }
 
     @Override
