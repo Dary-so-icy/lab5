@@ -2,8 +2,9 @@ package managers;
 
 import collection.LabWork;
 import exceptions.NoSuchIdException;
-
+import jakarta.xml.bind.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashSet;
@@ -57,7 +58,8 @@ public class CollectionManager {
             throw new IOException();
         }
         try {
-            this.scanner = new Scanner(new File(commandScriptPath));
+            Scanner scanner = new Scanner(new File(path)); //fuck
+            JAXBContext jaxbContext = JAXBContext.newInstance(scanner);
         } catch (FileNotFoundException e) {
             System.out.println("No such file");
         }
