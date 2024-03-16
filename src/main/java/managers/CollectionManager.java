@@ -59,7 +59,7 @@ public class CollectionManager {
         }
         try {
             Scanner scanner = new Scanner(new File(path)); //fuck
-            JAXBContext jaxbContext = JAXBContext.newInstance(scanner);
+            //JAXBContext jaxbContext = JAXBContext.newInstance(scanner);
         } catch (FileNotFoundException e) {
             System.out.println("No such file");
         }
