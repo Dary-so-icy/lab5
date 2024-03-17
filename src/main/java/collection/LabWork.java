@@ -5,11 +5,7 @@ import lombok.Getter;
 import managers.Validatable;
 
 import java.util.Date;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.*;
 import org.eclipse.persistence;
 @Getter
 @AllArgsConstructor
