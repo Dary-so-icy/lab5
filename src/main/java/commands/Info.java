@@ -1,5 +1,7 @@
 package commands;
 
+import managers.CollectionManager;
+
 public class Info extends Command {
     public Info() {
         super("info", "вывести в стандартный поток вывода информацию о коллекции");
@@ -7,6 +9,13 @@ public class Info extends Command {
 
     @Override
     public void execute(String[] args) {
-        // что то сделать тут тоже надо
+        if (CollectionManager.getCollection().isEmpty()){
+            System.out.println("Коллекция пока что пуста. Тип коллекции: " + CollectionManager.getCollection().getClass());
+        }
+        else {
+            System.out.println("Тип коллекции: " + CollectionManager.getCollection().getClass());
+            System.out.println("Количество элементов: " + CollectionManager.getCollection().size());
+            //System.out.println("Дата инициализации: " + CollectionManager.getCollection().getFirst().getCreationDate());
+        }
     }
 }

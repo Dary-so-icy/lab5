@@ -1,6 +1,6 @@
 package collection.AskForms;
 
-import commandManagers.StandartConsole;
+import managers.StandartConsole;
 
 import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
@@ -92,7 +92,7 @@ public abstract class Form<T> {
                 try {
                     Date date = new Date();
                     SimpleDateFormat formatter = new SimpleDateFormat(input);
-                    //String stringDate = formatter.format(date);
+                    String stringDate = formatter.format(date);
                     return date;
                 } catch (DateTimeException e) {
                     console.printError(name + " должно быть в формате год-месяц-день!");

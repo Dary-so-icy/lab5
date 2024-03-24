@@ -1,17 +1,13 @@
-package commandManagers;
+package managers;
 
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import managers.CollectionManager;
 
-public class StandartConsole implements Console{
+import java.io.Console;
+
+//console мб в отдельный класс???
+public class StandartConsole {
     private static final String P = "$ ";
-    private static Scanner fileScanner = null;
-    private static Scanner defScanner = new Scanner(System.in);
-
-    /**
-     * Выводит obj.toString() в консоль
-     * @param obj Объект для печати
-     */
+    //private Console console;
     public void print(Object obj) {
         System.out.print(obj);
     }
@@ -30,14 +26,6 @@ public class StandartConsole implements Console{
      */
     public void printError(Object obj) {
         System.err.println("Error: " + obj);
-    }
-
-    public String readln() throws NoSuchElementException, IllegalStateException {
-        return (fileScanner!=null?fileScanner:defScanner).nextLine();
-    }
-
-    public boolean isCanReadln() throws IllegalStateException {
-        return (fileScanner!=null?fileScanner:defScanner).hasNextLine();
     }
 
     /**
@@ -61,13 +49,5 @@ public class StandartConsole implements Console{
      */
     public String getPrompt() {
         return P;
-    }
-
-    public void selectFileScanner(Scanner scanner) {
-        this.fileScanner = scanner;
-    }
-
-    public void selectConsoleScanner() {
-        this.fileScanner = null;
     }
 }
