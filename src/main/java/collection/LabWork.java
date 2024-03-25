@@ -53,6 +53,6 @@ public class LabWork implements Validatable {
     }
     @Override
     public int compareTo(LabWork o) {
-        return name.compareTo(o.getName());
+        return Float.compare(minimalPoint, o.getMinimalPoint());
     }
 }

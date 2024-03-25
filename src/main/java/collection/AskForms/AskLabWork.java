@@ -6,18 +6,17 @@ import java.util.Date;
 public class AskLabWork extends Form<LabWork> {
     @Override
     public LabWork build() {
-        int id = askInteger("id"); //тут что то не так
+        Integer id = askInteger("id"); //тут что то не так
         // надо aйди по другому генерить
-        console.println("Введите название: ");
+        System.out.println("Введите название лабораторной работы: ");
         String name = scanner.nextLine().trim();
         Coordinates coord = new AskCoordinates().build();
-        Date date = askDate("локальная дата");
+        //Date date = askDate("локальная дата");
         Float minpoint = askFloat("минимальное значение", true);
-        Difficulty en = (Difficulty) askEnum("сложность", Difficulty.values());
+        Difficulty en = (Difficulty) askEnum("сложность работы", Difficulty.values());
         Person author = new AskPerson().build();
-        if (date != null) {
-            return new LabWork(id, name, coord, date, minpoint, en, author);
-        }
-        return new LabWork(id, name, coord, minpoint, en, author);
+        return new LabWork(id, name, coord, new Date(), minpoint, en, author);
+
+        //return new LabWork(id, name, coord, minpoint, en, author);
     }
 }

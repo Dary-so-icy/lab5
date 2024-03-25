@@ -9,7 +9,7 @@ public class Save extends Command{
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String args) {
         try {
             CollectionManager.saveCollection();
         } catch (JAXBException e) {

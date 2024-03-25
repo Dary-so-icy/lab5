@@ -15,7 +15,7 @@ public class PrintFieldAscendingAuthor extends Command{
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String args) {
         if (CollectionManager.getCollection().isEmpty()){
             System.out.println("Коллекция пуста.");
         }

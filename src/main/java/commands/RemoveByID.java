@@ -3,6 +3,7 @@ package commands;
 import managers.CollectionManager;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class RemoveByID extends Command{
     public RemoveByID(){
@@ -10,10 +11,11 @@ public class RemoveByID extends Command{
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String args) {
+
         try {
-            System.out.println();
-            CollectionManager.removeById(Integer.parseInt(Arrays.toString(args)));
+            int id = Integer.parseInt(args.trim());
+            CollectionManager.removeById(id);
         } catch (NumberFormatException e) {
             throw new NumberFormatException("Формат введенного id неверен. Введите целое число!");
         }

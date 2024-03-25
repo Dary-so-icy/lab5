@@ -10,7 +10,7 @@ public class Show extends Command{
         super("show", "вывести в стандартный поток вывода все элементы коллекции в строковом представлении");
     }
     @Override
-    public void execute(String[] args) {
+    public void execute(String args) {
         Set<LabWork> collection = CollectionManager.getCollection();
         if (collection.isEmpty()) {
             System.out.println("Коллекция пустая");

@@ -12,11 +12,11 @@ public class UpdateID extends Command{
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String args) {
         try {
-            LabWork lab = CollectionManager.findById(Integer.parseInt(Arrays.toString(args)));
+            LabWork lab = CollectionManager.findById(Integer.parseInt(args));
             if (lab != null) {
-                CollectionManager.updateById(new AskLabWork().build(), Integer.parseInt(Arrays.toString(args)));
+                CollectionManager.updateById(new AskLabWork().build(), Integer.parseInt(args));
             }
         } catch (NumberFormatException e) {
             System.out.println("Введен неверный id. Поле должно быть числом!");

@@ -10,9 +10,9 @@ public class RemoveGreater extends Command{
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String args) {
         try {
-            CollectionManager.getCollection().removeIf(s -> s.getId() < Integer.parseInt(Arrays.toString(args)));
+            CollectionManager.getCollection().removeIf(s -> s.getId() < Integer.parseInt(args));
 
         } catch (NumberFormatException e) {
             System.out.println("Формат введеного id неверен");

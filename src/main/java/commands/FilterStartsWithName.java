@@ -10,9 +10,9 @@ public class FilterStartsWithName extends Command{
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String args) {
         CollectionManager.getCollection().stream()
-                .filter(sp -> sp.getName().startsWith(Arrays.toString(args)))
+                .filter(sp -> sp.getName().startsWith(args))
                 .forEach(System.out::println);
 
     }

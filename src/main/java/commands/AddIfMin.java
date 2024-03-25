@@ -1,34 +1,38 @@
 package commands;
 
+import collection.AskForms.AskLabWork;
+import collection.LabWork;
+import managers.CollectionManager;
+import managers.StandartConsole;
+import java.util.Objects;
+
 public class AddIfMin extends Command{
     public AddIfMin(){
         super("add_if_min", "добавить новый элемент коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции");
     }
 
     @Override
-    public void execute(String[] args) {
-        Person groupAdmin = studyGroup.getGroupAdmin();
-        if (groupAdmin != null) {
-            boolean result = state.hasPersonWithPassportId(groupAdmin.getPassportID());
-            if (result) {
-                return Result.error("Вы пытались добавить groupAdmin с уже существующем passportId");
+    public void execute(String args) {
+        StandartConsole console = new StandartConsole();
+        //if (!args.isBlank()) throw new IllegalArguments();
+        try {
+            console.println("Создание объекта LabWork");
+            LabWork newElement = new AskLabWork().build();
+            console.println("Создание объекта LabWork окончено успешно!");
+            if (newElement.compareTo(Objects.requireNonNull(CollectionManager.getCollection().stream()
+                    .filter(Objects::nonNull)
+                    .min(LabWork::compareTo)
+                    .orElse(null))) >= 1){
+                CollectionManager.addElement(newElement);
+                console.println("Объект успешно добавлен");
+            } else {
+                console.println("Элемент больше минимального");
             }
+        } catch (Exception invalidForm) {
+            console.printError("Поля объекта не валидны! Объект не создан!");
+//        }  catch (ExceptionInFileMode e){
+//            console.printError("Поля в файле не валидны! Объект не создан");
         }
-        Collection<StudyGroup> collection = state.getCollection();
-        List<StudyGroup> collectionStudyGroup = new ArrayList<>(collection);
-        Collections.sort(collectionStudyGroup);
-        if (collectionStudyGroup.isEmpty()) {
-            return Result.error("Вам не с чем сравнивать");
-        }
-        StudyGroup firstElement = collectionStudyGroup.get(0);
-        if (studyGroup.compareTo(firstElement) < 0) {
-            state.addElement(studyGroup);
-        } else {
-            return Result.error("Не получилось добавить элемент в коллекцию. Значение вашего элемента больше, чем у наименьшего элемента коллекции. ");
-        }
-        return Result.success("Вы успешно добавили элемент коллекции");
-    }
-
 
 }
 }

@@ -8,7 +8,7 @@ public class Info extends Command {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String args) {
         if (CollectionManager.getCollection().isEmpty()){
             System.out.println("Коллекция пока что пуста. Тип коллекции: " + CollectionManager.getCollection().getClass());
         }

@@ -11,7 +11,7 @@ public class History extends Command{
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String args) {
         ArrayList<String> history = Commander.getCommandHistory();
         if (!history.isEmpty()){
             for (String command: history.subList(Math.max(0, history.size() - 10), history.size())){

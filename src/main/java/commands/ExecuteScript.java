@@ -9,7 +9,7 @@ public class ExecuteScript extends Command{
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String args) {
         String commandName = null;
         String arg;
         while (ScannerManager.getUserScanner().hasNextLine()) {

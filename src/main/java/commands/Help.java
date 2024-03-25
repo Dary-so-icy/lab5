@@ -10,9 +10,8 @@ public class Help extends Command{
     }
 
     @Override
-    public void execute(String[] args){
-        Commander commander = new Commander();
-        Collection<Command> commands = commander.getCommands().values();
+    public void execute(String args){
+        Collection<Command> commands = Commander.getCommands().values();
         System.out.println("Доступны команды:");
         for (Command command : commands) {
             System.out.println(command.getName() + ": " + command.getInfo());

@@ -1,5 +1,6 @@
 package collection.AskForms;
 
+import managers.ScannerManager;
 import managers.StandartConsole;
 
 import java.text.SimpleDateFormat;
@@ -9,9 +10,9 @@ import java.util.Scanner;
 
 public abstract class Form<T> {
 
-    protected StandartConsole console;
+    protected StandartConsole console = new StandartConsole();
 
-    protected Scanner scanner;
+    protected Scanner scanner = ScannerManager.getUserScanner();
 
     public abstract T build();
 
@@ -68,6 +69,7 @@ public abstract class Form<T> {
             for (Enum value : values) {
                 console.print(value + " ");
             }
+            console.print("\n");
             String str = scanner.nextLine().trim();
             try {
                 for (Enum value : values) {
