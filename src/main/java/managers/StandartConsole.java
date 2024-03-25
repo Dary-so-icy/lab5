@@ -7,7 +7,7 @@ import java.io.Console;
 //console мб в отдельный класс???
 public class StandartConsole {
     private static final String P = "$ ";
-    //private Console console;
+    private static Console console;
     public void print(Object obj) {
         System.out.print(obj);
     }

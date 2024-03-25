@@ -16,8 +16,7 @@ import java.util.Map;
 public class Commander {
     private static Map<String, Command> commands;
 
-    private static ArrayList<String> history = new ArrayList<>();// просто список всех команд
-    // а надо еще сто бы сохранялась история чтобы список хранил по хронологии значения
+    private static ArrayList<String> history = new ArrayList<>();
     public Commander(){
         commands = new LinkedHashMap<>();
 
@@ -39,7 +38,7 @@ public class Commander {
         commands.put("update_id", new UpdateID());
     }
 
-    public void execute(String name, String[] args) { //throws NoSuchCommand, IllegalArguments, CommandRuntimeError, ExitObliged {
+    public void execute(String name, String args) { //throws NoSuchCommand, IllegalArguments, CommandRuntimeError, ExitObliged {
         Command command = commands.get(name);
         //if (command == null) throw new NoSuchCommand();
         command.execute(args);

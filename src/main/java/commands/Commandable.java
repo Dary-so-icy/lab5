@@ -2,6 +2,6 @@ package commands;
 
 public interface Commandable {
     String getName();
-    void execute(String[] arg);
+    void execute(String arg);
     String getInfo();
 }

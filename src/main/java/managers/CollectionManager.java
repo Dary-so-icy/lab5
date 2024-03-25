@@ -97,7 +97,7 @@ public class CollectionManager {
 
         return null;
     }
-//    public static void saveCollection() throws JAXBException {
+    public static void saveCollection() throws JAXBException {
 //        //LabWork labs = new LabWork();
 //        labs.setCollectionOfDragons(collectionOfDragons);
 //
@@ -110,8 +110,8 @@ public class CollectionManager {
 //
 //        System.out.println("Коллекция сохранена.");
 //
-//    }
-    public void addElement(LabWork lab){
+    }
+    public static void addElement(LabWork lab){
         collection.add(lab);
     }
     public static LabWork getById(long id){
