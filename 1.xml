@@ -13,11 +13,11 @@
         <person>
             <name>Pop</name>
             <height>195</height>
-            <locatiion>
+            <location>
                 <x>50</x>
                 <y>12.5</y>
                 <name>park</name>
-            </locatiion>
+            </location>
         </person>
     </labwork>
     <labwork>
@@ -33,11 +33,11 @@
         <person>
             <name>Vanya</name>
             <height>175</height>
-            <locatiion>
+            <location>
                 <x>100</x>
                 <y>125</y>
                 <name>office</name>
-            </locatiion>
+            </location>
         </person>
     </labwork>
     <labwork>
@@ -53,11 +53,11 @@
         <person>
             <name>Petya</name>
             <height>172</height>
-            <locatiion>
+            <location>
                 <x>90</x>
                 <y>11</y>
                 <name>sea</name>
-            </locatiion>
+            </location>
         </person>
     </labwork>
     <labwork>
@@ -73,11 +73,11 @@
         <person>
             <name>Ann</name>
             <height>155</height>
-            <locatiion>
+            <location>
                 <x>975</x>
                 <y>1235</y>
                 <name>home</name>
-            </locatiion>
+            </location>
         </person>
     </labwork>
 </labworks>

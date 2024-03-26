@@ -3,6 +3,10 @@ package commands;
 import collection.Models.AskLabWork;
 import collection.LabWork;
 import managers.CollectionManager;
+/**
+ * Команда 'update_id'. Обновляет значение элемента коллекции, id которого равен заданному
+ * @author darya
+ */
 
 public class UpdateID extends Command{
     public UpdateID(){

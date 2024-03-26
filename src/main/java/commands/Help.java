@@ -3,7 +3,10 @@ package commands;
 import managers.Commander;
 
 import java.util.Collection;
-
+/**
+ * Команда 'help'. Выводит справку по доступным командам
+ * @author darya
+ */
 public class Help extends Command{
     public Help() {
         super("help", "вывести справку по доступным командам");

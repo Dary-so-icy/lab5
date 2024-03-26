@@ -45,11 +45,11 @@ public abstract class Model<T> {
         }
     }
 
-    public Double askDouble(String name) {
+    public Double askDouble(String name, boolean isNecessary) {
         while (true) {
             console.println("Введите " + name + ": ");
             String input = scanner.nextLine().trim();
-            if (!(input.equals(""))) {
+            if (!(input.equals(""))&isNecessary) {
                 try {
                     double num = Double.parseDouble(input);
                     if (num <= 0) throw new IllegalArgumentException();

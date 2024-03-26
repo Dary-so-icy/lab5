@@ -3,8 +3,10 @@ package commands;
 import collection.LabWork;
 import managers.CollectionManager;
 
-import java.util.*;
-
+/**
+ * Команда 'min_by_creation_date'. Выводит любой объект из коллекции, значение поля creationDate которого является минимальным
+ * @author darya
+ */
 public class MinByCreationDate extends Command{
     public MinByCreationDate(){
         super("min_by_creation_date", "вывести любой объект из коллекции, значение поля creationDate которого является минимальным");
@@ -16,7 +18,6 @@ public class MinByCreationDate extends Command{
             System.out.println("Коллекция пуста.");
         }
         else {
-            Set<LabWork> labs = CollectionManager.getCollection();
             LabWork minDate = null;
             for (LabWork lab : CollectionManager.getCollection()) {
                 if ((minDate == null) || (lab.getCreationDate().compareTo(minDate.getCreationDate())) < 0 ) {
@@ -26,7 +27,7 @@ public class MinByCreationDate extends Command{
             if (minDate == null) {
                 System.out.println("Минимальной даты не обнаружено.");
             } else {
-                System.out.println("Минимальная дата: " + minDate.getCreationDate() + ". Элемент: " + minDate.toString());
+                System.out.println("Минимальная дата: " + minDate.getCreationDate() + ". Элемент: " + minDate);
             }
 
 

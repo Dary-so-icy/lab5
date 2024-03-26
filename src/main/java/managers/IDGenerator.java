@@ -3,7 +3,10 @@ package managers;
 import collection.LabWork;
 
 import java.util.HashSet;
-
+/**
+ * Класс генерирующий id
+ * @author darb0ga
+ */
 public class IDGenerator {
     public static int generate() {
         HashSet<LabWork> lab = (HashSet<LabWork>) CollectionManager.getCollection();

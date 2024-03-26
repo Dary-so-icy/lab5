@@ -1,10 +1,10 @@
 package commands;
 
 import managers.CollectionManager;
-
-import java.util.Arrays;
-import java.util.Scanner;
-
+/**
+ * Команда 'remove_by_id'. Удаляет элемент из коллекции по его id
+ * @author darya
+ */
 public class RemoveByID extends Command{
     public RemoveByID(){
         super("remove_by_id", "удалить элемент из коллекции по его id");

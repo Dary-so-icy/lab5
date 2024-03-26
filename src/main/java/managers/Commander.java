@@ -2,14 +2,13 @@ package managers;
 
 import commands.*;
 import commands.Command;
-import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Класс )))
+ * Класс команд и их истории
  * @author darb0ga
  */
 
@@ -45,17 +44,12 @@ public class Commander {
     }
 
     public void addToHistory(String userCommand) {
-        if(commands.containsKey(userCommand)){
-            history.add(userCommand);
+        history.add(userCommand);
+        if (history.size() >= 14) {
+            history.remove(0);
         }
-        //Command command = commands.get(userCommand);
-        //history.add(command.getName());
-        //history.add(userCommand);
     }
 
-    /**
-     * @return История команд.
-     */
     public static ArrayList<String> getCommandHistory() {
         return history;
     }

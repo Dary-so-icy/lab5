@@ -2,8 +2,10 @@ package commands;
 
 import managers.CollectionManager;
 
-import java.util.Arrays;
-
+/**
+ * Команда 'filter_starts_with_name'. Выводит элементы, значение поля name которых начинается с заданной подстроки
+ * @author darya
+ */
 public class FilterStartsWithName extends Command{
     public FilterStartsWithName(){
         super("filter_starts_with_name", "вывести элементы, значение поля name которых начинается с заданной подстроки");

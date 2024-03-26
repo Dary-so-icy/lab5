@@ -1,7 +1,10 @@
 package commands;
 
 import java.util.Objects;
-
+/**
+ * Абстрактный класс команда
+ * @author darya
+ */
 public abstract class Command implements Commandable {
     private final String name;
     private final String description;

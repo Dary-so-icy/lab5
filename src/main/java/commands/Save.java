@@ -1,10 +1,11 @@
 package commands;
 
-import jakarta.xml.bind.JAXBException;
 import managers.CollectionManager;
 
-import java.io.IOException;
-
+/**
+ * Команда 'save'. Сохраняет коллекцию в файл
+ * @author darya
+ */
 public class Save extends Command{
     public Save(){
         super("save", "сохранить коллекцию в файл");

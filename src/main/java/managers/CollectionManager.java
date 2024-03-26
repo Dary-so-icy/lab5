@@ -7,31 +7,18 @@ import jakarta.xml.bind.*;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Менеджер коллекции
+ * @author darb0ga
+ */
 public class CollectionManager {
     protected StandartConsole console;
-    /**
-     * Хранимая коллекция
-     */
     private static HashSet<LabWork> collection = new HashSet<>();
-    /**
-     * Дата инициализации коллекции
-     */
     public static final Date initializationTime = new Date();
-
-    /**
-     * Возвращает коллекцию
-     *
-     * @return Коллекция
-     */
     public static Set<LabWork> getCollection() {
         return collection;
     }
 
-    /**
-     * Удаляет элемент коллекции по заданному значению id
-     *
-     * @param id id элемента
-     */
     public static void removeById(long id) {
         if (getById(id) != null) {
             collection.remove(getById(id));
@@ -40,11 +27,6 @@ public class CollectionManager {
         }
     }
 
-    /**
-     * Ищет элемент коллекции по заданному значению id
-     *
-     * @param id id элемента
-     */
     public static LabWork findById(long id) {
         for (LabWork lab : CollectionManager.collection) {
             if (lab.getId() == id) {

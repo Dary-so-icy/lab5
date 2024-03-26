@@ -5,10 +5,12 @@ import collection.Person;
 import managers.CollectionManager;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.stream.Collectors;
-
+/**
+ * Команда 'print_field_ascending_author'. Выводит значения поля author всех элементов в порядке возрастания
+ * @author darya
+ */
 public class PrintFieldAscendingAuthor extends Command{
     public PrintFieldAscendingAuthor(){
         super("print_field_ascending_author", "вывести значения поля author всех элементов в порядке возрастания");
@@ -30,7 +32,7 @@ public class PrintFieldAscendingAuthor extends Command{
             ArrayList<Person> sortedPerson = people.stream()
                     .sorted(compareByName)
                     .collect(Collectors.toCollection(ArrayList::new));
-            //Collections.sort(people);
+
             System.out.println("Поле Author в порядке убывания:");
             for (Person person: sortedPerson){
                 System.out.print(person + "\n");

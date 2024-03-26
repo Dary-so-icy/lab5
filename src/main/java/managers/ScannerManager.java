@@ -4,6 +4,7 @@ import lombok.Getter;
 import java.util.Scanner;
 /**
  * Класс хранящий сканер для программы
+ * @author darb0ga
  */
 @Getter
 public class ScannerManager {

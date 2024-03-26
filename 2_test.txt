@@ -1,9 +1,9 @@
 add
-Katya
+cookie
 1
 2
 3
-4
-false
+TERRIBLE
+Alex
 false
 show

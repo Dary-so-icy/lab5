@@ -36,15 +36,28 @@ public class Person {
         this.location = location;
     }
 
+    public Person(String name) {
+        this.name = name;
+        this.height = null;
+        this.location = null;
+    }
     public Person(String name, double height) {
         this.name = name;
         this.height = height;
         this.location = null;
     }
     public Person(){}
+
     @Override
     public String toString() {
-        return "Person{name: " + name + ", " +
+        if (location == null) {
+            return "Person{name: " + name + ", " +
+                    "height: " + height + "}";
+        } else if (height == null) {
+            return "Person{name: " + name + "}";
+
+        }
+        return "Person{name: " + name + ", "+
                 "height: " + height + ", " +
                 "location: " + location + "}";
     }

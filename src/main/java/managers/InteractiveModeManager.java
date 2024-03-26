@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * Класс обработки пользовательского ввода
- * @author darb0ga
+ * @author darya
  */
 public class InteractiveModeManager {
     private final StandartConsole console;
@@ -15,9 +15,6 @@ public class InteractiveModeManager {
         this.console = console;
         this.commander = commandManager;
     }
-    /**
-     * Перманентная работа с пользователем и выполнение команд
-     */
     public void interactiveMode(){
         Scanner userScanner = ScannerManager.getUserScanner();
         while (true) {
