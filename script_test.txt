@@ -1,0 +1,7 @@
+info
+execute_file 2_test.txt
+max_by_creation_date
+filter_starts_with_name web
+print_field_ascending_author
+remove_by_id 1
+show
