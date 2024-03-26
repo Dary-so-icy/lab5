@@ -1,9 +1,14 @@
-package collection.AskForms;
+package collection.Models;
 
 import collection.Location;
 import collection.Person;
 
-public class AskPerson extends Form<Person>{
+/**
+ * Класс для создания человека
+ * @author darya
+ */
+
+public class AskPerson extends Model<Person> {
 
     @Override
     public Person build(){

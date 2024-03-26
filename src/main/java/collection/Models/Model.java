@@ -1,14 +1,14 @@
-package collection.AskForms;
+package collection.Models;
 
 import managers.ScannerManager;
 import managers.StandartConsole;
 
-import java.text.SimpleDateFormat;
-import java.time.DateTimeException;
-import java.util.Date;
 import java.util.Scanner;
-
-public abstract class Form<T> {
+/**
+ * Класс чтения объекта
+ * @author darya
+ */
+public abstract class Model<T> {
 
     protected StandartConsole console = new StandartConsole();
 
@@ -63,16 +63,16 @@ public abstract class Form<T> {
         }
     }
 
-    public Enum askEnum(String name, Enum[] values) {
+    public <S extends Enum<S>> Enum<S> askEnum(String name, Enum<S>[] values) {
         while (true) {
             console.println("Введите " + name + ": ");
-            for (Enum value : values) {
+            for (Enum<S> value : values) {
                 console.print(value + " ");
             }
             console.print("\n");
             String str = scanner.nextLine().trim();
             try {
-                for (Enum value : values) {
+                for (Enum<S> value : values) {
                     if (value.toString().equals(str)) {
                         return value;
                     }
@@ -84,25 +84,4 @@ public abstract class Form<T> {
         }
     }
 
-    public Date askDate(String name) {
-        while (true) {
-
-            console.println("Введите дату в формате 2024-03-10(год-месяц-день): ");
-
-            String input = scanner.nextLine().trim();
-            if (!(input.equals(""))) {
-                try {
-                    Date date = new Date();
-                    SimpleDateFormat formatter = new SimpleDateFormat(input);
-                    String stringDate = formatter.format(date);
-                    return date;
-                } catch (DateTimeException e) {
-                    console.printError(name + " должно быть в формате год-месяц-день!");
-                }
-            } else {
-                return null;
-            }
-
-        }
-    }
 }

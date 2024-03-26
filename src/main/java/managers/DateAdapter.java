@@ -2,32 +2,25 @@ package managers;
 
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-public class DateAdapter extends XmlAdapter {
+public class DateAdapter extends XmlAdapter<String, Date>{
 
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-//    @Override
-//    public String marshal(Date v) throws Exception {
-//        return v.toString();
-//        //return v.format(formatter);
-//    }
-//
-//    @Override
-//    public Date unmarshal(String v) throws Exception {
-//        return Date.parse(v, formatter);
-//    }
-
+    //private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private static final String formatter = "yyyy-MM-dd HH:mm:ss";
 
     @Override
-    public Object unmarshal(Object o) throws Exception {
-        return null;
+    public String marshal(Date v) throws Exception {
+        return new SimpleDateFormat(formatter).format(v);
+        //return v.format(formatter);
     }
 
-    @Override
-    public Object marshal(Object o) throws Exception {
-        return null;
+
+    public Date unmarshal(String v) throws Exception {
+        return new SimpleDateFormat(formatter).parse(v);
     }
+
+
 }

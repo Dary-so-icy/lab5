@@ -3,17 +3,19 @@ package commands;
 import jakarta.xml.bind.JAXBException;
 import managers.CollectionManager;
 
+import java.io.IOException;
+
 public class Save extends Command{
     public Save(){
-        super("update_id", "обновить значение элемента коллекции, id которого равен заданному");
+        super("save", "сохранить коллекцию в файл");
     }
 
     @Override
     public void execute(String args) {
         try {
-            CollectionManager.saveCollection();
-        } catch (JAXBException e) {
-            System.out.println(e.getMessage());
+            CollectionManager.saveCollection("5.xml");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

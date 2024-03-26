@@ -1,19 +1,33 @@
 package collection;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
+/**
+ * Класс человека
+ * @author darya
+ */
 @Getter
 @Setter
-@AllArgsConstructor
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Person {
-    @XmlElement(name = "name")
+    /**
+     * Имя создателя
+     */
+    @XmlElement(name = "name", required = true)
     private String name; //Поле не может быть null, Строка не может быть пустой
-    @XmlElement(name = "height")
+    /**
+     * Рост человека
+     */
+    @XmlElement(name = "height", required = true, nillable = true)
     private Double height; //Поле может быть null, Значение поля должно быть больше 0
-    @XmlElement(name = "location")
+    /**
+     * Локация человека
+     */
+    @XmlElement(name = "location", required = true, nillable = true)
     private Location location; //Поле может быть null
 
     public Person(String name, double height, Location location) {
@@ -27,12 +41,12 @@ public class Person {
         this.height = height;
         this.location = null;
     }
-
+    public Person(){}
     @Override
     public String toString() {
-        return "Person{\"name\": " + name + ", " +
-                "\"height\": \"" + height + "\", " +
-                "\"location\": \"" + location + "}";
+        return "Person{name: " + name + ", " +
+                "height: " + height + ", " +
+                "location: " + location + "}";
     }
 
 }

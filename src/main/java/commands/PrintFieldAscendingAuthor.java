@@ -33,7 +33,7 @@ public class PrintFieldAscendingAuthor extends Command{
             //Collections.sort(people);
             System.out.println("Поле Author в порядке убывания:");
             for (Person person: sortedPerson){
-                System.out.print(person + " ");
+                System.out.print(person + "\n");
             }
         }
     }

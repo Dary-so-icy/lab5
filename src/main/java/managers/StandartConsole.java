@@ -6,7 +6,6 @@ import java.io.Console;
 
 //console мб в отдельный класс???
 public class StandartConsole {
-    private static final String P = "$ ";
     private static Console console;
     public void print(Object obj) {
         System.out.print(obj);
@@ -28,26 +27,5 @@ public class StandartConsole {
         System.err.println("Error: " + obj);
     }
 
-    /**
-     * Выводит 2 колонки
-     * @param elementLeft Левый элемент колонки.
-     * @param elementRight Правый элемент колонки.
-     */
-    public void printTable(Object elementLeft, Object elementRight) {
-        System.out.printf(" %-35s%-1s%n", elementLeft, elementRight);
-    }
 
-    /**
-     * Выводит prompt текущей консоли
-     */
-    public void prompt() {
-        print(P);
-    }
-
-    /**
-     * @return prompt текущей консоли
-     */
-    public String getPrompt() {
-        return P;
-    }
 }

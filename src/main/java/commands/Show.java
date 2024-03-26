@@ -4,7 +4,10 @@ import collection.LabWork;
 import managers.CollectionManager;
 import java.util.Set;
 
-
+/**
+ * Команда 'show'. Выводит в стандартный поток вывода все элементы коллекции в строковом представлении
+ * @author darya
+ */
 public class Show extends Command{
     public Show(){
         super("show", "вывести в стандартный поток вывода все элементы коллекции в строковом представлении");

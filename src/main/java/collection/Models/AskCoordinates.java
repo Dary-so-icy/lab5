@@ -1,8 +1,11 @@
-package collection.AskForms;
+package collection.Models;
 
 import collection.Coordinates;
-
-public class AskCoordinates extends Form<Coordinates> {
+/**
+ * Класс создания коорднат
+ * @author darya
+ */
+public class AskCoordinates extends Model<Coordinates> {
     @Override
     public Coordinates build() {
         float x = askFloat("Float координата x", false);

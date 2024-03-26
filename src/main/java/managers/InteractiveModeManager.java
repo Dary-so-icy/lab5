@@ -1,6 +1,4 @@
 package managers;
-import commands.Commandable;
-import managers.StandartConsole;
 
 import java.util.Scanner;
 
@@ -9,11 +7,11 @@ import java.util.Scanner;
  * Класс обработки пользовательского ввода
  * @author darb0ga
  */
-public class RuntimeManager {
+public class InteractiveModeManager {
     private final StandartConsole console;
     private final Commander commander;
 
-    public RuntimeManager(StandartConsole console, Commander commandManager) {
+    public InteractiveModeManager(StandartConsole console, Commander commandManager) {
         this.console = console;
         this.commander = commandManager;
     }

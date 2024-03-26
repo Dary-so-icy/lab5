@@ -1,7 +1,10 @@
 package commands;
 
 import managers.CollectionManager;
-
+/**
+ * Команда 'info'. Выводит в стандартный поток вывода информацию о коллекции
+ * @author darya
+ */
 public class Info extends Command {
     public Info() {
         super("info", "вывести в стандартный поток вывода информацию о коллекции");
@@ -15,7 +18,7 @@ public class Info extends Command {
         else {
             System.out.println("Тип коллекции: " + CollectionManager.getCollection().getClass());
             System.out.println("Количество элементов: " + CollectionManager.getCollection().size());
-            //System.out.println("Дата инициализации: " + CollectionManager.getCollection().getFirst().getCreationDate());
+            System.out.println("Дата инициализации: " + CollectionManager.initializationTime);
         }
     }
 }

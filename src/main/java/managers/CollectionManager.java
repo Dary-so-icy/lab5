@@ -1,52 +1,51 @@
 package managers;
 
-import collection.AskForms.AskLabWork;
+import collection.Models.LabForReading;
 import collection.LabWork;
-import collection.Person;
 import exceptions.NoSuchIdException;
 import jakarta.xml.bind.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
 
 public class CollectionManager {
     protected StandartConsole console;
     /**
      * Хранимая коллекция
      */
-    private static Set<LabWork> collection = new HashSet<>();
+    private static HashSet<LabWork> collection = new HashSet<>();
     /**
      * Дата инициализации коллекции
      */
-    private final Date initializationTime = new Date();
+    public static final Date initializationTime = new Date();
+
     /**
      * Возвращает коллекцию
+     *
      * @return Коллекция
      */
     public static Set<LabWork> getCollection() {
         return collection;
     }
+
     /**
      * Удаляет элемент коллекции по заданному значению id
+     *
      * @param id id элемента
      */
-    public static void removeById(long id){
-        if (getById(id) != null){
+    public static void removeById(long id) {
+        if (getById(id) != null) {
             collection.remove(getById(id));
         } else {
             throw new NoSuchIdException();
         }
     }
+
     /**
      * Ищет элемент коллекции по заданному значению id
+     *
      * @param id id элемента
      */
-    public static LabWork findById(long id){
+    public static LabWork findById(long id) {
         for (LabWork lab : CollectionManager.collection) {
             if (lab.getId() == id) {
                 return lab;
@@ -55,6 +54,7 @@ public class CollectionManager {
         System.out.printf("Не найдено элемента с id равным %d \n", id);
         return null;
     }
+
     public static void updateById(LabWork laba, int id) {
         LabWork lab = findById(id);
         try {
@@ -69,8 +69,10 @@ public class CollectionManager {
         }
 
     }
-    public LabWork readCollection(String path) throws IOException{
+
+    public static void readCollection(String path) throws IOException, JAXBException {
         File file = new File(path);
+        StandartConsole console = new StandartConsole();
         if (!file.exists()) {
             if (!file.createNewFile()) {
                 throw new IOException();
@@ -83,42 +85,62 @@ public class CollectionManager {
             throw new IOException();
         }
         try {
-            Scanner scanner = ScannerManager.getUserScanner();// Scanner(file) ; //fuck ScannerManager.getUserScanner()
-            JAXBContext jaxbContext = null;
-            jaxbContext = JAXBContext.newInstance(LabWork.class); // class для парсинга labwork
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            LabWork work = (LabWork) jaxbUnmarshaller.unmarshal(file);
-            return work;
-            //jaxbContext = JAXBContext.newInstance(); че за хуйня
-        } catch (JAXBException e) {
-            System.out.println("No such file");
+            Scanner fileReader = new Scanner(file);
+            String s = "";
+            while (fileReader.hasNextLine()) {
+                s +=  (fileReader.nextLine());
+            }
+            StringReader newFile = new StringReader(s);
 
+            collection.clear();
+
+            JAXBContext jaxbContext = null;
+            jaxbContext = JAXBContext.newInstance(LabForReading.class);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            LabForReading work = (LabForReading) jaxbUnmarshaller.unmarshal(newFile);
+            collection = new HashSet<>(work.getCollectionOfLabs());
+        } catch (Exception e) {
+            console.printError(e.getMessage());
         }
 
-        return null;
+
     }
-    public static void saveCollection() throws JAXBException {
-//        //LabWork labs = new LabWork();
-//        labs.setCollectionOfDragons(collectionOfDragons);
-//
-//        JAXBContext jaxbContext = JAXBContext.newInstance(AskLabWork.class);
-//        Marshaller marshaller = jaxbContext.createMarshaller();
-//        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-//        File file = new File(fileName);
-//
-//        marshaller.marshal(labs, new FileWriter());
-//
-//        System.out.println("Коллекция сохранена.");
-//
+    public static void saveCollection(String path){
+        StandartConsole console = new StandartConsole();
+        String file_path = System.getenv("file_path");
+        File file = new File(path);
+        if (file_path == null || file_path.isEmpty())
+            console.printError("Путь должен быть в переменных окружения в перменной 'file_path'");
+        else console.println("Путь получен успешно");
+        try {
+            LabForReading labs = new LabForReading();
+            labs.setCollectionOfLabs(collection);
+            JAXBContext context = JAXBContext.newInstance(LabForReading.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+            FileWriter fileWriter = new FileWriter(path);
+            marshaller.marshal(labs, fileWriter);
+            fileWriter.close();
+        } catch (IOException e) {
+            console.printError("Ошибка ввода вывода");
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
+        }
     }
-    public static void addElement(LabWork lab){
+
+    public static void addElement(LabWork lab) {
         collection.add(lab);
     }
-    public static LabWork getById(long id){
+
+    public static LabWork getById(long id) {
         for (LabWork element : collection) {
             if (element.getId() == id) return element;
         }
         return null;
     }
 
+    public static void removeElements(Collection<LabWork> toRemove) {
+        collection.removeAll(toRemove);
+    }
 }

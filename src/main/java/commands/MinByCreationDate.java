@@ -3,10 +3,7 @@ package commands;
 import collection.LabWork;
 import managers.CollectionManager;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class MinByCreationDate extends Command{
     public MinByCreationDate(){
@@ -20,20 +17,18 @@ public class MinByCreationDate extends Command{
         }
         else {
             Set<LabWork> labs = CollectionManager.getCollection();
+            LabWork minDate = null;
+            for (LabWork lab : CollectionManager.getCollection()) {
+                if ((minDate == null) || (lab.getCreationDate().compareTo(minDate.getCreationDate())) < 0 ) {
+                    minDate = lab;
+                }
+            }
+            if (minDate == null) {
+                System.out.println("Минимальной даты не обнаружено.");
+            } else {
+                System.out.println("Минимальная дата: " + minDate.getCreationDate() + ". Элемент: " + minDate.toString());
+            }
 
-//            Collections.sort(labs, new Comparator<LabWork>() {
-//                public int compare(LabWork lab1, LabWork lab2) {
-//                    if (lab1.getCreationDate() == null){
-//                        return 1;
-//                    }
-//                    if (lab2.getCreationDate() == null){
-//                        return -1;
-//                    }
-//                    return Long.valueOf(lab1.getCreationDate() - lab2.getCreationDate());
-//                }
-//            });
-
-            //System.out.println(labs.getLast().toString());
 
     }
 }}

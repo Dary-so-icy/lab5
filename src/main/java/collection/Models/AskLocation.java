@@ -1,9 +1,12 @@
-package collection.AskForms;
+package collection.Models;
 
-import collection.Coordinates;
 import collection.Location;
 
-public class AskLocation extends Form<Location>{
+/**
+ * Класс для создания локации
+ * @author darya
+ */
+public class AskLocation extends Model<Location> {
     @Override
     public Location build() {
         int a = askInteger("Integer координата y(локация)");
