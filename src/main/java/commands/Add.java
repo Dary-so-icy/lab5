@@ -2,6 +2,7 @@ package commands;
 
 import collection.Models.AskLabWork;
 import collection.LabWork;
+import exceptions.CommandRuntimeError;
 import managers.CollectionManager;
 
 /**
@@ -14,9 +15,9 @@ public class Add extends Command{
     }
 
     @Override
-    public void execute(String args) {
+    public void execute(String args) throws CommandRuntimeError {
         AskLabWork newLab = new AskLabWork();
-        //if (args != null) throw new IllegalArguments();\
+        if (args != null) throw new CommandRuntimeError();
         try {
             System.out.println("Создание объекта LabWork");
             LabWork lab0 = new AskLabWork().build();

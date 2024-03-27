@@ -1,5 +1,8 @@
 package managers;
 
+import exceptions.CommandRuntimeError;
+import exceptions.NoSuchCommand;
+
 import java.util.Scanner;
 
 
@@ -19,8 +22,8 @@ public class InteractiveModeManager {
         Scanner userScanner = ScannerManager.getUserScanner();
         while (true) {
             try{
-                //if (!userScanner.hasNextLine()) // throw new ExitObliged();
-                String userCommand = userScanner.nextLine().trim() + " "; // прибавляем пробел, чтобы split выдал два элемента в массиве
+                if (!userScanner.hasNextLine()) {commander.execute("exit", "");};
+                String userCommand = userScanner.nextLine().trim() + " ";
                 this.launch(userCommand.split(" ", 2));
                 commander.addToHistory(userCommand);
             } catch (Exception exception) {
@@ -33,11 +36,10 @@ public class InteractiveModeManager {
         }
     }
 
-    public  void launch(String[] userCommand){ // throws NoSuchCommand, ExitObliged, IllegalArguments, CommandRuntimeError {
+    public  void launch(String[] userCommand)throws NoSuchCommand, CommandRuntimeError {
         if (userCommand[0].equals("")) return;
         var command = Commander.getCommands().get(userCommand[0]);
         if (command == null) {
-            console.printError("Команда '" + userCommand[0] + "' не найдена. Наберите 'help' для справки");
             return ;
         }
         try {

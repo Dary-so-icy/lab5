@@ -25,8 +25,5 @@ public class Main {
         }
         now.interactiveMode();
     }
-    /*
-    info - вывод изменить
-     */
 
 }

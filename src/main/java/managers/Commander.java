@@ -2,6 +2,8 @@ package managers;
 
 import commands.*;
 import commands.Command;
+import exceptions.CommandRuntimeError;
+import exceptions.NoSuchCommand;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -37,9 +39,9 @@ public class Commander {
         commands.put("update_id", new UpdateID());
     }
 
-    public void execute(String name, String args) { //throws NoSuchCommand, IllegalArguments, CommandRuntimeError, ExitObliged {
+    public void execute(String name, String args) throws NoSuchCommand, CommandRuntimeError {
         Command command = commands.get(name);
-        //if (command == null) throw new NoSuchCommand();
+        if (command == null) throw new NoSuchCommand();
         command.execute(args);
     }
 

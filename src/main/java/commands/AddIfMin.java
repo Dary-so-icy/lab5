@@ -2,6 +2,7 @@ package commands;
 
 import collection.Models.AskLabWork;
 import collection.LabWork;
+import exceptions.CommandRuntimeError;
 import managers.CollectionManager;
 import managers.StandartConsole;
 import java.util.Objects;
@@ -16,9 +17,9 @@ public class AddIfMin extends Command{
     }
 
     @Override
-    public void execute(String args) {
+    public void execute(String args) throws CommandRuntimeError {
         StandartConsole console = new StandartConsole();
-        //if (!args.isBlank()) throw new IllegalArguments();
+        if (!args.isBlank()) throw new CommandRuntimeError();
         try {
             console.println("Создание объекта LabWork");
             LabWork newElement = new AskLabWork().build();
@@ -34,8 +35,6 @@ public class AddIfMin extends Command{
             }
         } catch (Exception invalidForm) {
             console.printError("Поля объекта не валидны! Объект не создан!");
-//        }  catch (ExceptionInFileMode e){
-//            console.printError("Поля в файле не валидны! Объект не создан");
         }
 
 }

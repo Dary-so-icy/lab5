@@ -1,10 +1,6 @@
 package commands;
 
 import managers.Commander;
-import managers.ScannerManager;
-import managers.StandartConsole;
-
-import java.io.Console;
 import java.util.Scanner;
 
 /**
@@ -20,19 +16,25 @@ public class ExecuteScript extends Command {
     @Override
     public void execute(String file) {
         Scanner scanner = new Scanner(file);
-        String out = "";
+        String s = "";
         while (scanner.hasNext()) {
-            //Console console = new Console();
-            Scanner fileReader = new Scanner(file);
-            String s = "";
-            s = fileReader.nextLine().trim();
-            Command command = Commander.getCommands().get(s);
-            if (command == null) {
-                out += "Неизвестная команда " + s;
-                //return false;
+            try {
+                s = scanner.nextLine().trim();
+                String[] cmd = (s + " ").split(" ", 2);
+                if (cmd[0].isBlank()) return;
+                if (cmd[0].equals("execute_script")) {
+                    continue;
+                }
+                System.out.println("Выполнение команды " + cmd[0]);
+                Commander comm = new Commander();
+                comm.execute(cmd[0], cmd[1]);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
 
 
         }
+
+
+        }
     }
-}

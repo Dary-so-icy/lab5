@@ -21,10 +21,13 @@ public class RemoveGreater extends Command{
         try {
             LabWork newElement = new AskLabWork().build();
             console.println("Создание заданного объекта LabWork окончено успешно!");
-            Collection<LabWork> toRemove = CollectionManager.getCollection().stream()
-                    .filter(Objects::nonNull)
-                    //.filter(LabWork-> collection.LabWork)
-                    .toList();
+            Collection<LabWork> toRemove = null;
+            for (LabWork el : CollectionManager.getCollection()){
+                if (newElement.compareTo(el) < 0){
+                    toRemove.add(el);
+                }
+            }
+
             CollectionManager.removeElements(toRemove);
             console.println("Объекты успешно удалены");
 
