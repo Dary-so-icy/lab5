@@ -14,7 +14,7 @@ public class Save extends Command{
     @Override
     public void execute(String args) {
         try {
-            CollectionManager.saveCollection("5.xml");
+            CollectionManager.saveCollection("final.xml");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

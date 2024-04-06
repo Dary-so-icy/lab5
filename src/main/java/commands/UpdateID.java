@@ -16,9 +16,9 @@ public class UpdateID extends Command{
     @Override
     public void execute(String args) {
         try {
-            LabWork lab = CollectionManager.findById(Integer.parseInt(args));
+            LabWork lab = CollectionManager.findById(Integer.parseInt(args.trim()));
             if (lab != null) {
-                CollectionManager.updateById(new AskLabWork().build(), Integer.parseInt(args));
+                CollectionManager.updateById(new AskLabWork().build(), Integer.parseInt(args.trim()));
             }
         } catch (NumberFormatException e) {
             System.out.println("Введен неверный id. Поле должно быть числом!");

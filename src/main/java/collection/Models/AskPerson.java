@@ -15,22 +15,26 @@ public class AskPerson extends Model<Person> {
     public Person build() {
         console.println("Введите имя человека: ");
         String name = scanner.nextLine().trim();
-        console.println("Хотите ли вводить рост человека? (true/false): ");
-        String ask1 = scanner.nextLine().trim();
-        if (ask1.equals("true")) {
-            double h = askDouble("рост человека(необязательное поле)", false);
-            console.println("Хотите ли вводить локацию человека? (true/false): ");
-            String ask2 = scanner.nextLine().trim();
-            if (ask2.equals("true")) {
-                Location loc = new AskLocation().build();
-                return new Person(name, h, loc);
-            } else {
-                return new Person(name, h);
-            }
-
-        } else {
-            return new Person(name);
+        double h = 0;
+        Location loc = null;
+        Boolean ask_height = askBoolean("Хотите ли вводить рост человека?");
+        if (ask_height) {
+            h = askDouble("рост человека");
         }
+        Boolean ask_loc = askBoolean("Хотите ли вводить локацию человека?");
+        if (ask_loc) {
+            loc = new AskLocation().build();
+        }
+        if(!(h==0) & !(loc == null)){
+            return new Person(name, h, loc);
+        }else if(!(h==0)){
+            return new Person(name, h);
+        }else if(!(loc==null)){
+            return new Person(name, loc);
+        }
+        return new Person(name);
+
+
 
     }
 }

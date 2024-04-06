@@ -11,8 +11,7 @@ public class AskLabWork extends Model<LabWork> {
         System.out.println("Введите название лабораторной работы: ");
         String name = scanner.nextLine().trim();
         Coordinates coord = new AskCoordinates().build();
-        //Date date = askDate("локальная дата");
-        Float minpoint = askFloat("минимальное значение", true);
+        Float minpoint = askFloat("минимальное значение(должно быть больше 0)", true);
         Difficulty en = (Difficulty) askEnum("сложность работы", Difficulty.values());
         Person author = new AskPerson().build();
         return new LabWork(name, coord, minpoint, en, author);

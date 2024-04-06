@@ -1,8 +1,10 @@
 package commands;
 
 import java.util.Objects;
+
 /**
  * Абстрактный класс команда
+ *
  * @author darya
  */
 public abstract class Command implements Commandable {
@@ -43,6 +45,7 @@ public abstract class Command implements Commandable {
     public int hashCode() {
         return Objects.hash(name, description);
     }
+
     @Override
     public String toString() {
         return this.getClass().getName() + '{' + "name= " + this.getName() + ", description= " + this.getInfo() + '}';

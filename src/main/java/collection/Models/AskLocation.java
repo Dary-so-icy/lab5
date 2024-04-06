@@ -12,9 +12,9 @@ public class AskLocation extends Model<Location> {
     public Location build() {
         int a = askInteger("Integer координата y(локация)");
         float b = askFloat("Float координата x(локация)", false);
-        console.println("Хотите ли вводить наименование локации? (true/false): ");
-        String ask1 = scanner.nextLine().trim();
-        if (ask1.equals("true")) {
+        Boolean ask = askBoolean("Хотите ли вводить наименование локации?");
+        if (ask) {
+            console.println("Введите имя локации: ");
             String name = scanner.nextLine().trim();
             return new Location(a, b, name);
         } else {

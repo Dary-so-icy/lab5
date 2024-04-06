@@ -1,6 +1,10 @@
 package commands;
 
 import managers.Commander;
+import managers.ScannerManager;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -14,12 +18,14 @@ public class ExecuteScript extends Command {
     }
 
     @Override
-    public void execute(String file) {
-        Scanner scanner = new Scanner(file);
+    public void execute(String file) throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File(file));
         String s = "";
+        ScannerManager.setFile_scanner(scanner);
         while (scanner.hasNext()) {
             try {
                 s = scanner.nextLine().trim();
+                System.out.println(s);
                 String[] cmd = (s + " ").split(" ", 2);
                 if (cmd[0].isBlank()) return;
                 if (cmd[0].equals("execute_script")) {

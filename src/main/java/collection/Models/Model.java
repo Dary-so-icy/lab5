@@ -12,7 +12,7 @@ public abstract class Model<T> {
 
     protected StandartConsole console = new StandartConsole();
 
-    protected Scanner scanner = ScannerManager.getUserScanner();
+    protected Scanner scanner = ScannerManager.getScannerIn();
 
     public abstract T build();
 
@@ -29,6 +29,22 @@ public abstract class Model<T> {
         }
     }
 
+    public Boolean askBoolean(String name) {
+        while (true) {
+            console.println(name + "(true/false): ");
+            String input = scanner.nextLine().trim();
+            try {
+                if(input.equals("true")){
+                    return true;
+                } else if (input.equals("false")) {
+                    return false;
+                }
+            } catch (NumberFormatException e) {
+                console.printError(name + " должно быть полем типа Boolean!");
+            }
+        }
+    }
+
     public Float askFloat(String name, Boolean MoreThanZero) {
         while (true) {
             console.println("Введите " + name + ": ");
@@ -37,19 +53,20 @@ public abstract class Model<T> {
                 Float num = Float.parseFloat(input);
                 if (MoreThanZero) {
                     if (num > 0) return num;
+                }else{
+                    return num;
                 }
-                return num;
             } catch (NumberFormatException e) {
                 console.printError(name + " должно быть числом типа Float!");
             }
         }
     }
 
-    public Double askDouble(String name, boolean isNecessary) {
+    public Double askDouble(String name) {
         while (true) {
             console.println("Введите " + name + ": ");
             String input = scanner.nextLine().trim();
-            if (!(input.equals(""))&isNecessary) {
+            if (!input.equals("")){
                 try {
                     double num = Double.parseDouble(input);
                     if (num <= 0) throw new IllegalArgumentException();

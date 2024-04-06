@@ -46,16 +46,23 @@ public class Person {
         this.height = height;
         this.location = null;
     }
+    public Person(String name, Location loc) {
+        this.name = name;
+        this.height = null;
+        this.location = loc;
+    }
     public Person(){}
 
     @Override
     public String toString() {
-        if (location == null) {
+        if (location == null & !(height == null)) {
             return "Person{name: " + name + ", " +
                     "height: " + height + "}";
-        } else if (height == null) {
+        } else if (height == null& location==null) {
             return "Person{name: " + name + "}";
-
+        } else if (height == null) {
+            return "Person{name: " + name + ", " +
+                    "location: " + location + "}";
         }
         return "Person{name: " + name + ", "+
                 "height: " + height + ", " +

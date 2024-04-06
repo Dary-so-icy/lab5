@@ -23,7 +23,7 @@ public class Commander {
 
         commands.put("add", new Add());
         commands.put("add_if_min", new AddIfMin());
-        commands.put("clean", new Clear());
+        commands.put("clear", new Clear());
         commands.put("execute_script", new ExecuteScript());
         commands.put("exit", new Exit());
         commands.put("filter_starts_with_name", new FilterStartsWithName());
@@ -42,7 +42,12 @@ public class Commander {
     public void execute(String name, String args) throws NoSuchCommand, CommandRuntimeError {
         Command command = commands.get(name);
         if (command == null) throw new NoSuchCommand();
-        command.execute(args);
+        try {
+            command.execute(args.trim());
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     public void addToHistory(String userCommand) {

@@ -16,8 +16,7 @@ public class Add extends Command{
 
     @Override
     public void execute(String args) throws CommandRuntimeError {
-        AskLabWork newLab = new AskLabWork();
-        if (args != null) throw new CommandRuntimeError();
+        if (!args.equals("")) throw new CommandRuntimeError();
         try {
             System.out.println("Создание объекта LabWork");
             LabWork lab0 = new AskLabWork().build();
