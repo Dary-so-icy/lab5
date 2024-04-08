@@ -1,3 +1,4 @@
+info
 add
 cookie
 1
@@ -5,5 +6,6 @@ cookie
 3
 TERRIBLE
 Alex
+false
 false
 show
