@@ -1,15 +1,18 @@
 package collection.Models;
 
 import collection.Coordinates;
+
+import java.util.Scanner;
+
 /**
  * Класс создания коорднат
  * @author darya
  */
 public class AskCoordinates extends Model<Coordinates> {
     @Override
-    public Coordinates build() {
-        float x = askFloat("Float координата x", false);
-        int y = askInteger("Integer координата y");
+    public Coordinates build(Scanner scan, boolean isFile) {
+        float x = askFloat("Float координата x", false, scan, isFile);
+        int y = askInteger("Integer координата y", scan, isFile);
         return new Coordinates(x, y);
     }
 }

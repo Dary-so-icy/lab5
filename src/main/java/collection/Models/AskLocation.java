@@ -2,6 +2,8 @@ package collection.Models;
 
 import collection.Location;
 
+import java.util.Scanner;
+
 /**
  * Класс для создания локации
  *
@@ -9,13 +11,15 @@ import collection.Location;
  */
 public class AskLocation extends Model<Location> {
     @Override
-    public Location build() {
-        int a = askInteger("Integer координата y(локация)");
-        float b = askFloat("Float координата x(локация)", false);
-        Boolean ask = askBoolean("Хотите ли вводить наименование локации?");
+    public Location build(Scanner scan, boolean isFile) {
+        int a = askInteger("Integer координата y(локация)", scan, isFile);
+        float b = askFloat("Float координата x(локация)", false, scan, isFile);
+        Boolean ask = askBoolean("Хотите ли вводить наименование локации?", scan, isFile);
         if (ask) {
-            console.println("Введите имя локации: ");
-            String name = scanner.nextLine().trim();
+            if(!isFile) {
+                console.println("Введите имя локации: ");
+            }
+            String name = scan.nextLine().trim();
             return new Location(a, b, name);
         } else {
             return new Location(a, b);

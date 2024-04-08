@@ -1,6 +1,9 @@
 package commands;
 
 import managers.CollectionManager;
+
+import java.util.Scanner;
+
 /**
  * Команда 'remove_by_id'. Удаляет элемент из коллекции по его id
  * @author darya
@@ -11,7 +14,7 @@ public class RemoveByID extends Command{
     }
 
     @Override
-    public void execute(String args) {
+    public void execute(String args, Scanner scan, boolean isFile) {
 
         try {
             int id = Integer.parseInt(args.trim());

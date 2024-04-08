@@ -3,6 +3,8 @@ package collection.Models;
 import collection.Location;
 import collection.Person;
 
+import java.util.Scanner;
+
 /**
  * Класс для создания человека
  *
@@ -12,18 +14,20 @@ import collection.Person;
 public class AskPerson extends Model<Person> {
 
     @Override
-    public Person build() {
-        console.println("Введите имя человека: ");
-        String name = scanner.nextLine().trim();
+    public Person build(Scanner scan, boolean isFile) {
+        if(!isFile) {
+            console.println("Введите имя человека: ");
+        }
+        String name = scan.nextLine().trim();
         double h = 0;
         Location loc = null;
-        Boolean ask_height = askBoolean("Хотите ли вводить рост человека?");
+        Boolean ask_height = askBoolean("Хотите ли вводить рост человека?", scan, isFile);
         if (ask_height) {
-            h = askDouble("рост человека");
+            h = askDouble("рост человека", scan, isFile);
         }
-        Boolean ask_loc = askBoolean("Хотите ли вводить локацию человека?");
+        Boolean ask_loc = askBoolean("Хотите ли вводить локацию человека?", scan, isFile);
         if (ask_loc) {
-            loc = new AskLocation().build();
+            loc = new AskLocation().build(scan, isFile);
         }
         if(!(h==0) & !(loc == null)){
             return new Person(name, h, loc);

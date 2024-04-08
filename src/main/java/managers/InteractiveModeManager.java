@@ -1,9 +1,6 @@
 package managers;
 
-import exceptions.CommandRuntimeError;
 import exceptions.NoSuchCommand;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -22,16 +19,21 @@ public class InteractiveModeManager {
     }
 
     public void interactiveMode() {
-        Scanner userScanner = ScannerManager.getScannerIn();
+        Scanner userScanner = new Scanner(System.in); //&?
         while (true) {
             try {
                 if (!userScanner.hasNextLine()) {
-                    commander.execute("exit", "");
+                    commander.execute("exit", "", userScanner, false);
                 }
-                ;
-                String userCommand = userScanner.nextLine().trim() + " ";
-                this.launch(userCommand.split(" ", 2));
-                commander.addToHistory(userCommand);
+
+                String userCommand = userScanner.nextLine().trim() ;
+                var comm = userCommand.split(" ");
+                if(comm.length > 1) {
+                    this.launch(comm[0], comm[1], userScanner, false);
+                }else{
+                    this.launch(comm[0], "", userScanner, false);
+                }
+                commander.addToHistory(comm[0]);
             } catch (NoSuchCommand ex) {
                 console.printError("Такой команды нет в списке");
             } catch (Exception exception) {
@@ -42,18 +44,17 @@ public class InteractiveModeManager {
         }
     }
 
-    public void launch(String[] userCommand) throws NoSuchCommand, CommandRuntimeError {
-        if (userCommand[0].equals("")) return;
-        var command = Commander.getCommands().get(userCommand[0]);
+    public void launch(String comm, String args, Scanner scan, boolean isFile) throws NoSuchCommand {
+        if (comm.equals("")) return;
+        var command = Commander.getCommands().get(comm);
         if (command == null) {
             throw new NoSuchCommand();
         }
         try {
-            String argument = userCommand[1];
-            command.execute(argument);
-            console.print("// Команда " + userCommand[0] + " выполнена //" + '\n');
+            command.execute(args, scan, isFile);
+            console.print("// Команда " + comm + " выполнена //" + '\n');
         } catch (Exception e) {
-            console.print(e);
+            console.print(e.getMessage());
         }
     }
 

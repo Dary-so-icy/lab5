@@ -1,6 +1,9 @@
 package commands;
 
 import managers.CollectionManager;
+
+import java.util.Scanner;
+
 /**
  * Команда 'info'. Выводит в стандартный поток вывода информацию о коллекции
  * @author darya
@@ -11,7 +14,7 @@ public class Info extends Command {
     }
 
     @Override
-    public void execute(String args) {
+    public void execute(String args, Scanner scan, boolean isFile) {
         if (CollectionManager.getCollection().isEmpty()){
             System.out.println("Коллекция пока что пуста. Тип коллекции: " + CollectionManager.getCollection().getClass());
         }

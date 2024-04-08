@@ -2,6 +2,8 @@ package commands;
 
 import managers.Commander;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  * Команда 'history'. Выводит последние 14 команд(без их аргументов)
  * @author darya
@@ -12,7 +14,7 @@ public class History extends Command{
     }
 
     @Override
-    public void execute(String args) {
+    public void execute(String args, Scanner scan, boolean isFile) {
         ArrayList<String> history = Commander.getCommandHistory();
         if (!history.isEmpty()){
             System.out.println("Введенные команды: ");

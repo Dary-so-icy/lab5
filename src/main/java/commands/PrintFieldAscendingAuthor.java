@@ -6,6 +6,7 @@ import managers.CollectionManager;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 /**
  * Команда 'print_field_ascending_author'. Выводит значения поля author всех элементов в порядке возрастания
@@ -17,7 +18,7 @@ public class PrintFieldAscendingAuthor extends Command{
     }
 
     @Override
-    public void execute(String args) {
+    public void execute(String args, Scanner scan, boolean isFile) {
         if (CollectionManager.getCollection().isEmpty()){
             System.out.println("Коллекция пуста.");
         }

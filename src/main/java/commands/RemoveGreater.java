@@ -4,10 +4,8 @@ import collection.LabWork;
 import collection.Models.AskLabWork;
 import managers.CollectionManager;
 import managers.StandartConsole;
-
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Objects;
+import java.util.Scanner;
 
 public class RemoveGreater extends Command{
     public RemoveGreater(){
@@ -15,12 +13,12 @@ public class RemoveGreater extends Command{
     }
 
     @Override
-    public void execute(String args) {
+    public void execute(String args, Scanner scan, boolean isFile) {
         StandartConsole console = new StandartConsole();
         //if (!args.isBlank()) throw new IllegalArguments();
         try {
-            LabWork newElement = new AskLabWork().build();
-            console.println("Создание заданного объекта LabWork окончено успешно!");
+            LabWork newElement = new AskLabWork().build(scan, isFile);
+            console.println("Создание заданного объекта для сравнения LabWork окончено успешно!");
             Collection<LabWork> toRemove = null;
             for (LabWork el : CollectionManager.getCollection()){
                 if (newElement.compareTo(el) < 0){

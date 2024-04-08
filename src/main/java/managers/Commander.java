@@ -8,6 +8,7 @@ import exceptions.NoSuchCommand;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  * Класс команд и их истории
@@ -39,11 +40,11 @@ public class Commander {
         commands.put("update_id", new UpdateID());
     }
 
-    public void execute(String name, String args) throws NoSuchCommand, CommandRuntimeError {
+    public static void execute(String name, String args, Scanner scan, boolean isFile) throws NoSuchCommand, CommandRuntimeError {
         Command command = commands.get(name);
         if (command == null) throw new NoSuchCommand();
         try {
-            command.execute(args.trim());
+            command.execute(args.trim(), scan, isFile);
         } catch (Exception e){
             System.out.println(e.getMessage());
         }

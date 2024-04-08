@@ -3,6 +3,8 @@ package commands;
 import collection.LabWork;
 import managers.CollectionManager;
 
+import java.util.Scanner;
+
 /**
  * Команда 'min_by_creation_date'. Выводит любой объект из коллекции, значение поля creationDate которого является минимальным
  * @author darya
@@ -13,7 +15,7 @@ public class MinByCreationDate extends Command{
     }
 
     @Override
-    public void execute(String args) {
+    public void execute(String args, Scanner scan, boolean isFile) {
         if (CollectionManager.getCollection().isEmpty()){
             System.out.println("Коллекция пуста.");
         }

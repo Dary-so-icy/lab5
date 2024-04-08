@@ -1,6 +1,9 @@
 package commands;
 
 import managers.CollectionManager;
+
+import java.util.Scanner;
+
 /**
  * Команда 'clear'. Очищает коллекцию
  * @author darya
@@ -11,7 +14,7 @@ public class Clear extends Command{
     }
 
     @Override
-    public void execute(String args) {
+    public void execute(String args, Scanner scan, boolean isFile) {
         CollectionManager.getCollection().clear();
     }
 }

@@ -6,6 +6,7 @@ import exceptions.CommandRuntimeError;
 import managers.CollectionManager;
 import managers.StandartConsole;
 import java.util.Objects;
+import java.util.Scanner;
 
 /**
  * Команда 'add_if_min'. Добавляет новый элемент коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
@@ -17,12 +18,12 @@ public class AddIfMin extends Command{
     }
 
     @Override
-    public void execute(String args) throws CommandRuntimeError {
+    public void execute(String args, Scanner scan, boolean isFile) throws CommandRuntimeError {
         StandartConsole console = new StandartConsole();
         if (!args.isBlank()) throw new CommandRuntimeError();
         try {
             console.println("Создание объекта LabWork");
-            LabWork newElement = new AskLabWork().build();
+            LabWork newElement = new AskLabWork().build(scan, isFile);
             console.println("Создание объекта LabWork окончено успешно!");
             if (newElement.compareTo(Objects.requireNonNull(CollectionManager.getCollection().stream()
                     .filter(Objects::nonNull)

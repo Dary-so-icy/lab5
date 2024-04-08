@@ -1,10 +1,16 @@
 package managers;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Консоль
  * @author darb0ga
  */
 public class StandartConsole {
+    @Getter
+    @Setter
+    private static boolean fileMode = false;
     public void print(Object obj) {
         System.out.print(obj);
     }

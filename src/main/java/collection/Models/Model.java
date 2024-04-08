@@ -1,6 +1,5 @@
 package collection.Models;
 
-import managers.ScannerManager;
 import managers.StandartConsole;
 
 import java.util.Scanner;
@@ -12,27 +11,29 @@ public abstract class Model<T> {
 
     protected StandartConsole console = new StandartConsole();
 
-    protected Scanner scanner = ScannerManager.getScannerIn();
 
-    public abstract T build();
+    public abstract T build(Scanner scan, boolean isFile);
 
-    public Integer askInteger(String name) {
+    public Integer askInteger(String name, Scanner scan, boolean isFile) {
         while (true) {
-            console.println("Введите " + name + ": ");
-            String input = scanner.nextLine().trim();
+            if(!isFile) {
+                console.println("Введите " + name + ": ");
+            }
+            String input = scan.nextLine().trim();
             try {
-                int num = Integer.parseInt(input);
-                return num;
+                return Integer.parseInt(input);
             } catch (NumberFormatException e) {
                 console.printError(name + " должно быть числом типа Integer!");
             }
         }
     }
 
-    public Boolean askBoolean(String name) {
+    public Boolean askBoolean(String name, Scanner scan, boolean isFile) {
         while (true) {
-            console.println(name + "(true/false): ");
-            String input = scanner.nextLine().trim();
+            if(!isFile) {
+                console.println(name + "(true/false): ");
+            }
+            String input = scan.nextLine().trim();
             try {
                 if(input.equals("true")){
                     return true;
@@ -45,10 +46,12 @@ public abstract class Model<T> {
         }
     }
 
-    public Float askFloat(String name, Boolean MoreThanZero) {
+    public Float askFloat(String name, Boolean MoreThanZero, Scanner scan, boolean isFile) {
         while (true) {
-            console.println("Введите " + name + ": ");
-            String input = scanner.nextLine().trim();
+            if(!isFile) {
+                console.println("Введите " + name + ": ");
+            }
+            String input = scan.nextLine().trim();
             try {
                 Float num = Float.parseFloat(input);
                 if (MoreThanZero) {
@@ -62,10 +65,12 @@ public abstract class Model<T> {
         }
     }
 
-    public Double askDouble(String name) {
+    public Double askDouble(String name, Scanner scan, boolean isFile) {
         while (true) {
-            console.println("Введите " + name + ": ");
-            String input = scanner.nextLine().trim();
+            if(!isFile) {
+                console.println("Введите " + name + ": ");
+            }
+            String input = scan.nextLine().trim();
             if (!input.equals("")){
                 try {
                     double num = Double.parseDouble(input);
@@ -80,14 +85,16 @@ public abstract class Model<T> {
         }
     }
 
-    public <S extends Enum<S>> Enum<S> askEnum(String name, Enum<S>[] values) {
+    public <S extends Enum<S>> Enum<S> askEnum(String name, Enum<S>[] values, Scanner scan, boolean isFile) {
         while (true) {
-            console.println("Введите " + name + ": ");
-            for (Enum<S> value : values) {
-                console.print(value + " ");
+            if(!isFile) {
+                console.println("Введите " + name + ": ");
+                for (Enum<S> value : values) {
+                    console.print(value + " ");
+                }
+                console.print("\n");
             }
-            console.print("\n");
-            String str = scanner.nextLine().trim();
+            String str = scan.nextLine().trim();
             try {
                 for (Enum<S> value : values) {
                     if (value.toString().equals(str)) {
@@ -100,5 +107,4 @@ public abstract class Model<T> {
             }
         }
     }
-
 }

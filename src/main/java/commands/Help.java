@@ -3,6 +3,8 @@ package commands;
 import managers.Commander;
 
 import java.util.Collection;
+import java.util.Scanner;
+
 /**
  * Команда 'help'. Выводит справку по доступным командам
  * @author darya
@@ -13,7 +15,7 @@ public class Help extends Command{
     }
 
     @Override
-    public void execute(String args){
+    public void execute(String args, Scanner scan, boolean isFile){
         Collection<Command> commands = Commander.getCommands().values();
         System.out.println("Доступны команды:");
         for (Command command : commands) {

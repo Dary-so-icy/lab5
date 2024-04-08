@@ -1,10 +1,10 @@
 package commands;
-
 import managers.Commander;
 import managers.ScannerManager;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -13,34 +13,63 @@ import java.util.Scanner;
  * @author darya
  */
 public class ExecuteScript extends Command {
+
     public ExecuteScript() {
         super("execute_script", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.");
     }
 
     @Override
-    public void execute(String file) throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File(file));
-        String s = "";
-        ScannerManager.setFile_scanner(scanner);
-        while (scanner.hasNext()) {
-            try {
-                s = scanner.nextLine().trim();
-                System.out.println(s);
-                String[] cmd = (s + " ").split(" ", 2);
-                if (cmd[0].isBlank()) return;
-                if (cmd[0].equals("execute_script")) {
-                    continue;
-                }
-                System.out.println("Выполнение команды " + cmd[0]);
-                Commander comm = new Commander();
-                comm.execute(cmd[0], cmd[1]);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+    public void execute(String file, Scanner scan, boolean isFile) throws FileNotFoundException {
+        try {
+            if (!(new File(file).isFile())) {
+                throw new IOException("/dev/zero");
             }
+            ScannerManager.setFile_scanner(file);
+            Scanner scanner = ScannerManager.getScanners().getLast();
+            String current_line;
+
+            while (!(current_line = scanner.nextLine()).isBlank()) {
+                String[] command = current_line.split(" ");
+                System.out.println(getName() );
+                if (command[0].equals(getName())) {
+                    if (ScannerManager.recurse(command[1])) {
+                        throw new RuntimeException("Найдена рекурсия! Повторно вызывается файл " + command[1]);
+                    }
+                }
+
+                try{
+                    if(command.length > 1) {
+                        Commander.execute(command[0], command[1], scanner, true);
+                    }else{
+                        Commander.execute(command[0], "", scanner, true);
+                    }
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+
+
+//                if (Commander.getCommands().get(command[0]) != null) {
+//                    System.out.println(command.length);
+//                    if (command.length > 1) {
+//                        Commander.execute(command[0], command[1]);
+//                    }else{
+//                        Commander.execute(command[0], "");
+//                    }
+//                } else {
+//                    console.printError("Такой команды нет!( Попробуйте еще раз!)).");
+//                }
+//                if (command[0].equals("execute_script")) {
+//                    StandartConsole.setFileMode(true);
+//
+//                }
 
 
         }
-
-
+            ScannerManager.getScanners().removeLast();
+            ScannerManager.getPathFiles().removeLast();
+            scanner.close();
+    } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
+}
