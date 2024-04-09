@@ -3,7 +3,6 @@ package collection;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 /**
@@ -14,9 +13,7 @@ import lombok.Setter;
 @Setter
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Person {
-    /**
-     * Имя создателя
-     */
+
     @XmlElement(name = "name", required = true)
     private String name; //Поле не может быть null, Строка не может быть пустой
     /**

@@ -30,7 +30,6 @@ public class ExecuteScript extends Command {
 
             while (!(current_line = scanner.nextLine()).isBlank()) {
                 String[] command = current_line.split(" ");
-                System.out.println(getName() );
                 if (command[0].equals(getName())) {
                     if (ScannerManager.recurse(command[1])) {
                         throw new RuntimeException("Найдена рекурсия! Повторно вызывается файл " + command[1]);
@@ -46,23 +45,6 @@ public class ExecuteScript extends Command {
                 }catch (Exception e){
                     System.out.println(e.getMessage());
                 }
-
-
-//                if (Commander.getCommands().get(command[0]) != null) {
-//                    System.out.println(command.length);
-//                    if (command.length > 1) {
-//                        Commander.execute(command[0], command[1]);
-//                    }else{
-//                        Commander.execute(command[0], "");
-//                    }
-//                } else {
-//                    console.printError("Такой команды нет!( Попробуйте еще раз!)).");
-//                }
-//                if (command[0].equals("execute_script")) {
-//                    StandartConsole.setFileMode(true);
-//
-//                }
-
 
         }
             ScannerManager.getScanners().removeLast();

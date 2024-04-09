@@ -1,6 +1,6 @@
 info
 add
-cookie
+NEW_ONE
 1
 2
 3
@@ -9,3 +9,4 @@ Alex
 false
 false
 show
+execute_script script_test.txt

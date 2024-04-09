@@ -17,7 +17,7 @@ public class Save extends Command{
     public void execute(String args, Scanner scan, boolean isFile) {
         try {
             System.out.println("CHANGE DIRECTORY");
-            CollectionManager.saveCollection("final.xml");
+            CollectionManager.saveCollection();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

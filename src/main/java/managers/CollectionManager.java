@@ -13,6 +13,7 @@ import java.util.*;
  */
 public class CollectionManager {
     protected StandartConsole console;
+    protected static File file;
     private static HashSet<LabWork> collection = new HashSet<>();
     public static final Date initializationTime = new Date();
     public static Set<LabWork> getCollection() {
@@ -37,23 +38,24 @@ public class CollectionManager {
         return null;
     }
 
-    public static void updateById(LabWork laba, int id) {
+    public static void updateById(LabWork newLab, int id) {
         LabWork lab = findById(id);
         try {
-            lab.setMinimalPoint(laba.getMinimalPoint());
+            assert lab != null;
+            lab.setMinimalPoint(newLab.getMinimalPoint());
             lab.setCreationDate(new Date());
-            lab.setAuthor(laba.getAuthor());
-            lab.setName(laba.getName());
-            lab.setCoordinates(laba.getCoordinates());
-            lab.setDifficulty(laba.getDifficulty());
+            lab.setAuthor(newLab.getAuthor());
+            lab.setName(newLab.getName());
+            lab.setCoordinates(newLab.getCoordinates());
+            lab.setDifficulty(newLab.getDifficulty());
         } catch (NullPointerException e) {
             System.out.println("No such space marine");
         }
 
     }
 
-    public static void readCollection(String path) throws IOException, JAXBException {
-        File file = new File(path);
+    public static void readCollection(String path) throws IOException{
+        file = new File(path);
         StandartConsole console = new StandartConsole();
         if (!file.exists()) {
             if (!file.createNewFile()) {
@@ -70,14 +72,13 @@ public class CollectionManager {
             Scanner fileReader = new Scanner(file);
             String s = "";
             while (fileReader.hasNextLine()) {
-                s +=  (fileReader.nextLine());
+                s= s + (fileReader.nextLine());
             }
             StringReader newFile = new StringReader(s);
 
             collection.clear();
 
-            JAXBContext jaxbContext = null;
-            jaxbContext = JAXBContext.newInstance(LabForReading.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(LabForReading.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             LabForReading work = (LabForReading) jaxbUnmarshaller.unmarshal(newFile);
             collection = new HashSet<>(work.getCollectionOfLabs());
@@ -87,10 +88,9 @@ public class CollectionManager {
 
 
     }
-    public static void saveCollection(String path){
+    public static void saveCollection(){
         StandartConsole console = new StandartConsole();
         String file_path = System.getenv("file_path");
-        File file = new File(path);
         if (file_path == null || file_path.isEmpty())
             console.printError("Путь должен быть в переменных окружения в перменной 'file_path'");
         else console.println("Путь получен успешно");
@@ -101,7 +101,7 @@ public class CollectionManager {
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
-            FileWriter fileWriter = new FileWriter(path);
+            FileWriter fileWriter = new FileWriter(file);
             marshaller.marshal(labs, fileWriter);
             fileWriter.close();
         } catch (IOException e) {
