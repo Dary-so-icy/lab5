@@ -12,13 +12,13 @@ import java.util.Scanner;
 
 /**
  * Класс команд и их истории
- * @author darb0ga
+ * @author darya
  */
 
 public class Commander {
     private static Map<String, Command> commands;
 
-    private static ArrayList<String> history = new ArrayList<>();
+    public static ArrayList<String> history = new ArrayList<>();
     public Commander(){
         commands = new LinkedHashMap<>();
 

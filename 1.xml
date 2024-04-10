@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <labworks>
     <labwork>
+        <id>18347624</id>
+        <name>business-plan</name>
+        <coordinates>
+            <x>144.0</x>
+            <y>123</y>
+        </coordinates>
+        <creationDate>2024-02-27 00:00:01</creationDate>
+        <minimalpoint>1.0</minimalpoint>
+        <difficulty>HARD</difficulty>
+        <person>
+            <name>Petya</name>
+            <height>172.0</height>
+            <location>
+                <x>90</x>
+                <y>11.0</y>
+                <name>sea</name>
+            </location>
+        </person>
+    </labwork>
+    <labwork>
         <id>18348624</id>
         <name>testing</name>
         <coordinates>
@@ -8,55 +28,15 @@
             <y>2</y>
         </coordinates>
         <creationDate>2020-02-27 00:00:01</creationDate>
-        <minimalpoint>1</minimalpoint>
+        <minimalpoint>1.0</minimalpoint>
         <difficulty>EASY</difficulty>
         <person>
             <name>Pop</name>
-            <height>195</height>
+            <height>195.0</height>
             <location>
                 <x>50</x>
                 <y>12.5</y>
                 <name>park</name>
-            </location>
-        </person>
-    </labwork>
-    <labwork>
-        <id>18347624</id>
-        <name>web</name>
-        <coordinates>
-            <x>5.2</x>
-            <y>1</y>
-        </coordinates>
-        <creationDate>2024-02-27 00:00:01</creationDate>
-        <minimalpoint>1</minimalpoint>
-        <difficulty>HARD</difficulty>
-        <person>
-            <name>Vanya</name>
-            <height>175</height>
-            <location>
-                <x>100</x>
-                <y>125</y>
-                <name>office</name>
-            </location>
-        </person>
-    </labwork>
-    <labwork>
-        <id>18347624</id>
-        <name>business-plan</name>
-        <coordinates>
-            <x>144</x>
-            <y>123</y>
-        </coordinates>
-        <creationDate>2024-02-27 00:00:01</creationDate>
-        <minimalpoint>1</minimalpoint>
-        <difficulty>HARD</difficulty>
-        <person>
-            <name>Petya</name>
-            <height>172</height>
-            <location>
-                <x>90</x>
-                <y>11</y>
-                <name>sea</name>
             </location>
         </person>
     </labwork>
@@ -68,15 +48,51 @@
             <y>1234567</y>
         </coordinates>
         <creationDate>2024-02-27 00:00:01</creationDate>
-        <minimalpoint>1</minimalpoint>
+        <minimalpoint>1.0</minimalpoint>
         <difficulty>EASY</difficulty>
         <person>
             <name>Ann</name>
-            <height>155</height>
+            <height>155.0</height>
             <location>
                 <x>975</x>
-                <y>1235</y>
+                <y>1235.0</y>
                 <name>home</name>
+            </location>
+        </person>
+    </labwork>
+    <labwork>
+        <id>414334</id>
+        <name>NEW_ONE</name>
+        <coordinates>
+            <x>1.0</x>
+            <y>2</y>
+        </coordinates>
+        <creationDate>2024-04-10 09:59:55</creationDate>
+        <minimalpoint>3.0</minimalpoint>
+        <difficulty>TERRIBLE</difficulty>
+        <person>
+            <name>Alex</name>
+            <height xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+            <location xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+        </person>
+    </labwork>
+    <labwork>
+        <id>18347624</id>
+        <name>web</name>
+        <coordinates>
+            <x>5.2</x>
+            <y>1</y>
+        </coordinates>
+        <creationDate>2024-02-27 00:00:01</creationDate>
+        <minimalpoint>1.0</minimalpoint>
+        <difficulty>HARD</difficulty>
+        <person>
+            <name>Vanya</name>
+            <height>175.0</height>
+            <location>
+                <x>100</x>
+                <y>125.0</y>
+                <name>office</name>
             </location>
         </person>
     </labwork>

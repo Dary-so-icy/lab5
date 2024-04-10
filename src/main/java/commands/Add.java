@@ -2,7 +2,7 @@ package commands;
 
 import collection.Models.AskLabWork;
 import collection.LabWork;
-import exceptions.CommandRuntimeError;
+import exceptions.IllegalParamException;
 import managers.CollectionManager;
 
 import java.util.Scanner;
@@ -17,8 +17,8 @@ public class Add extends Command{
     }
 
     @Override
-    public void execute(String args, Scanner scan, boolean isFile) throws CommandRuntimeError {
-        if (!args.equals("")) throw new CommandRuntimeError();
+    public void execute(String args, Scanner scan, boolean isFile) throws IllegalParamException {
+        if (!args.isBlank()) throw new IllegalParamException("*ничего*");
         try {
             System.out.println("Создание объекта LabWork");
             LabWork lab0 = new AskLabWork().build(scan, isFile);

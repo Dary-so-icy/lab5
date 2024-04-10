@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 /**
  * Класс для работы с типом данных Date
- * @author darb0ga
+ * @author darya
  */
 public class DateAdapter extends XmlAdapter<String, Date>{
 
@@ -14,7 +14,7 @@ public class DateAdapter extends XmlAdapter<String, Date>{
     private static final String formatter = "yyyy-MM-dd HH:mm:ss";
 
     @Override
-    public String marshal(Date v) throws Exception {
+    public String marshal(Date v) {
         return new SimpleDateFormat(formatter).format(v);
     }
 

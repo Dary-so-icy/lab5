@@ -1,5 +1,6 @@
 package commands;
 
+import exceptions.IllegalParamException;
 import managers.CollectionManager;
 
 import java.util.Scanner;
@@ -15,6 +16,7 @@ public class FilterStartsWithName extends Command{
 
     @Override
     public void execute(String args, Scanner scan, boolean isFile) {
+        if (args.isBlank()) throw new IllegalParamException("String");
         CollectionManager.getCollection().stream()
                 .filter(sp -> sp.getName().startsWith(args.trim()))
                 .forEach(System.out::println);

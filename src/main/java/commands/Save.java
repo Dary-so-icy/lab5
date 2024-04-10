@@ -16,7 +16,6 @@ public class Save extends Command{
     @Override
     public void execute(String args, Scanner scan, boolean isFile) {
         try {
-            System.out.println("CHANGE DIRECTORY");
             CollectionManager.saveCollection();
         } catch (Exception e) {
             throw new RuntimeException(e);

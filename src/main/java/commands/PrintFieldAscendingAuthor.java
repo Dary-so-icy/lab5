@@ -2,6 +2,7 @@ package commands;
 
 import collection.LabWork;
 import collection.Person;
+import exceptions.IllegalParamException;
 import managers.CollectionManager;
 
 import java.util.ArrayList;
@@ -18,7 +19,9 @@ public class PrintFieldAscendingAuthor extends Command{
     }
 
     @Override
-    public void execute(String args, Scanner scan, boolean isFile) {
+    public void execute(String args, Scanner scan, boolean isFile) throws IllegalParamException{
+
+        if (!args.isBlank()) throw new IllegalParamException("*ничего*");
         if (CollectionManager.getCollection().isEmpty()){
             System.out.println("Коллекция пуста.");
         }

@@ -1,5 +1,7 @@
 package commands;
 
+import exceptions.IllegalParamException;
+
 import java.util.Scanner;
 
 /**
@@ -12,7 +14,8 @@ public class Exit extends Command {
     }
 
     @Override
-    public void execute(String args, Scanner scan, boolean isFile) {
+    public void execute(String args, Scanner scan, boolean isFile) throws IllegalParamException{
+        if (!args.isBlank()) throw new IllegalParamException("*ничего*");
         System.out.print("Выход из программы");
         System.exit(0);
     }

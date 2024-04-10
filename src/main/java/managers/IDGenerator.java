@@ -5,7 +5,7 @@ import collection.LabWork;
 import java.util.HashSet;
 /**
  * Класс генерирующий id
- * @author darb0ga
+ * @author darya
  */
 public class IDGenerator {
     public static int generate() {
@@ -17,6 +17,7 @@ public class IDGenerator {
             for (LabWork element : lab) {
                 if (element.getId() == res) {
                     flag = false;
+                    break;
                 }
             }
             if (flag) {

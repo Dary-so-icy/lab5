@@ -2,7 +2,7 @@ package commands;
 
 import collection.Models.AskLabWork;
 import collection.LabWork;
-import exceptions.CommandRuntimeError;
+import exceptions.IllegalParamException;
 import managers.CollectionManager;
 import managers.StandartConsole;
 import java.util.Objects;
@@ -18,9 +18,9 @@ public class AddIfMin extends Command{
     }
 
     @Override
-    public void execute(String args, Scanner scan, boolean isFile) throws CommandRuntimeError {
+    public void execute(String args, Scanner scan, boolean isFile) throws IllegalParamException{
         StandartConsole console = new StandartConsole();
-        if (!args.isBlank()) throw new CommandRuntimeError();
+        if (!args.isBlank()) throw new IllegalParamException("*ничего*");
         try {
             console.println("Создание объекта LabWork");
             LabWork newElement = new AskLabWork().build(scan, isFile);

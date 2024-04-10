@@ -9,8 +9,9 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Scanner;
 /**
- * Класс хранящий сканер для программы
- * @author darb0ga
+ * Класс хранящий коллекцию сканеров и коллекцию исполняемых файлов
+ *
+ * @author darya
  */
 @Getter
 @Setter

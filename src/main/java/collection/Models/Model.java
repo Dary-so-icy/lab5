@@ -4,7 +4,7 @@ import managers.StandartConsole;
 
 import java.util.Scanner;
 /**
- * Класс чтения объекта
+ * Абстрактный класс чтения объекта
  * @author darya
  */
 public abstract class Model<T> {
@@ -101,9 +101,9 @@ public abstract class Model<T> {
                         return value;
                     }
                 }
-                console.printError(name + " такого значения нет в списке!");
+                console.printError(str + " - такого значения нет в списке!");
             } catch (IllegalArgumentException e) {
-                console.printError(name + " неверное значение поля!");
+                console.printError(str + " - неверное значение поля!");
             }
         }
     }

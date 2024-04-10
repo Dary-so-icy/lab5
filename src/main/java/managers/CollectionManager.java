@@ -9,7 +9,7 @@ import java.util.*;
 
 /**
  * Менеджер коллекции
- * @author darb0ga
+ * @author darya
  */
 public class CollectionManager {
     protected StandartConsole console;
@@ -28,29 +28,23 @@ public class CollectionManager {
         }
     }
 
-    public static LabWork findById(long id) {
+    public static LabWork findById(long id) throws NoSuchIdException{
         for (LabWork lab : CollectionManager.collection) {
             if (lab.getId() == id) {
                 return lab;
             }
         }
-        System.out.printf("Не найдено элемента с id равным %d \n", id);
-        return null;
+        throw new NoSuchIdException();
     }
 
-    public static void updateById(LabWork newLab, int id) {
+    public static void updateById(LabWork newLab, int id) throws NoSuchIdException{
         LabWork lab = findById(id);
-        try {
-            assert lab != null;
-            lab.setMinimalPoint(newLab.getMinimalPoint());
-            lab.setCreationDate(new Date());
-            lab.setAuthor(newLab.getAuthor());
-            lab.setName(newLab.getName());
-            lab.setCoordinates(newLab.getCoordinates());
-            lab.setDifficulty(newLab.getDifficulty());
-        } catch (NullPointerException e) {
-            System.out.println("No such space marine");
-        }
+        lab.setMinimalPoint(newLab.getMinimalPoint());
+        lab.setCreationDate(new Date());
+        lab.setAuthor(newLab.getAuthor());
+        lab.setName(newLab.getName());
+        lab.setCoordinates(newLab.getCoordinates());
+        lab.setDifficulty(newLab.getDifficulty());
 
     }
 

@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Консоль
- * @author darb0ga
+ * Класс с методами консоли и указателем на режим аботы программмы
+ * @author darya
  */
 public class StandartConsole {
     @Getter

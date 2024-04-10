@@ -1,6 +1,7 @@
 package commands;
 
 import collection.LabWork;
+import exceptions.IllegalParamException;
 import managers.CollectionManager;
 
 import java.util.Scanner;
@@ -15,7 +16,9 @@ public class MinByCreationDate extends Command{
     }
 
     @Override
-    public void execute(String args, Scanner scan, boolean isFile) {
+    public void execute(String args, Scanner scan, boolean isFile) throws IllegalParamException{
+
+        if (!args.isBlank()) throw new IllegalParamException("*ничего*");
         if (CollectionManager.getCollection().isEmpty()){
             System.out.println("Коллекция пуста.");
         }

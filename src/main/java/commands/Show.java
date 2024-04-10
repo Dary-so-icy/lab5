@@ -1,6 +1,7 @@
 package commands;
 
 import collection.LabWork;
+import exceptions.IllegalParamException;
 import managers.CollectionManager;
 
 import java.util.Scanner;
@@ -15,7 +16,8 @@ public class Show extends Command{
         super("show", "вывести в стандартный поток вывода все элементы коллекции в строковом представлении");
     }
     @Override
-    public void execute(String args, Scanner scan, boolean isFile) {
+    public void execute(String args, Scanner scan, boolean isFile) throws IllegalParamException {
+        if (!args.isBlank()) throw new IllegalParamException("*ничего*");
         Set<LabWork> collection = CollectionManager.getCollection();
         if (collection.isEmpty()) {
             System.out.println("Коллекция пустая");

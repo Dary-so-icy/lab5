@@ -1,5 +1,6 @@
 package commands;
 
+import exceptions.IllegalParamException;
 import managers.CollectionManager;
 
 import java.util.Scanner;
@@ -14,7 +15,8 @@ public class Clear extends Command{
     }
 
     @Override
-    public void execute(String args, Scanner scan, boolean isFile) {
+    public void execute(String args, Scanner scan, boolean isFile) throws IllegalParamException{
+        if (!args.isBlank()) throw new IllegalParamException("*ничего*");
         CollectionManager.getCollection().clear();
     }
 }

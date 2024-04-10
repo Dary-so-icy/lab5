@@ -1,4 +1,5 @@
 package commands;
+
 import managers.Commander;
 import managers.ScannerManager;
 
@@ -22,7 +23,7 @@ public class ExecuteScript extends Command {
     public void execute(String file, Scanner scan, boolean isFile) throws FileNotFoundException {
         try {
             if (!(new File(file).isFile())) {
-                throw new IOException("/dev/zero");
+                throw new IOException("/dev/null");
             }
             ScannerManager.setFile_scanner(file);
             Scanner scanner = ScannerManager.getScanners().getLast();
@@ -36,21 +37,22 @@ public class ExecuteScript extends Command {
                     }
                 }
 
-                try{
-                    if(command.length > 1) {
+                try {
+                    Commander.history.add(command[0]);
+                    if (command.length > 1) {
                         Commander.execute(command[0], command[1], scanner, true);
-                    }else{
+                    } else {
                         Commander.execute(command[0], "", scanner, true);
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
 
-        }
+            }
             ScannerManager.getScanners().removeLast();
             ScannerManager.getPathFiles().removeLast();
             scanner.close();
-    } catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

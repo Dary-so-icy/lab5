@@ -2,20 +2,25 @@ package commands;
 
 import collection.LabWork;
 import collection.Models.AskLabWork;
+import exceptions.IllegalParamException;
 import managers.CollectionManager;
 import managers.StandartConsole;
 import java.util.Collection;
 import java.util.Scanner;
-
+/**
+ * Команда 'remove_greater'. Удаляет элементы из коллекции, превосходящие данный
+ *
+ * @author darya
+ */
 public class RemoveGreater extends Command{
     public RemoveGreater(){
         super("remove_greater", "удалить из коллекции все элементы, превышающие заданный");
     }
 
     @Override
-    public void execute(String args, Scanner scan, boolean isFile) {
+    public void execute(String args, Scanner scan, boolean isFile) throws IllegalParamException{
         StandartConsole console = new StandartConsole();
-        //if (!args.isBlank()) throw new IllegalArguments();
+        if (!args.isBlank()) throw new IllegalParamException("*ничего*");
         try {
             LabWork newElement = new AskLabWork().build(scan, isFile);
             console.println("Создание заданного объекта для сравнения LabWork окончено успешно!");
@@ -30,8 +35,7 @@ public class RemoveGreater extends Command{
             console.println("Объекты успешно удалены");
 
         } catch (NumberFormatException e) {
-            System.out.println("Формат введеного id неверен");
-            System.out.println("The format of the argument is not right, collects an Integer Id");
+            throw new IllegalParamException("int");
 
         }
 

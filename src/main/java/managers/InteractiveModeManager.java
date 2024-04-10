@@ -1,5 +1,6 @@
 package managers;
 
+import exceptions.IllegalParamException;
 import exceptions.NoSuchCommand;
 import java.util.Scanner;
 
@@ -23,7 +24,7 @@ public class InteractiveModeManager {
         while (true) {
             try {
                 if (!userScanner.hasNextLine()) {
-                    commander.execute("exit", "", userScanner, false);
+                    System.exit(0);
                 }
 
                 String userCommand = userScanner.nextLine().trim() ;
@@ -35,12 +36,13 @@ public class InteractiveModeManager {
                 }
                 commander.addToHistory(comm[0]);
             } catch (NoSuchCommand ex) {
-                console.printError("Такой команды нет в списке");
+                console.printError(ex.toString());
+            }catch(IllegalParamException param){
+                console.printError(param);
             } catch (Exception exception) {
-                console.printError("Пользовательский ввод не обнаружен!");
-                console.printError("Введены неправильные аргументы команды");
-                console.printError("Ошибка при исполнении команды");
+                console.printError(exception.getMessage());
             }
+
         }
     }
 
@@ -54,7 +56,7 @@ public class InteractiveModeManager {
             command.execute(args, scan, isFile);
             console.print("// Команда " + comm + " выполнена //" + '\n');
         } catch (Exception e) {
-            console.print(e.getMessage());
+            console.printError(e);
         }
     }
 

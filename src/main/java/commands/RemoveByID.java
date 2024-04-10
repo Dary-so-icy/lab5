@@ -1,7 +1,7 @@
 package commands;
 
+import exceptions.IllegalParamException;
 import managers.CollectionManager;
-
 import java.util.Scanner;
 
 /**
@@ -14,13 +14,13 @@ public class RemoveByID extends Command{
     }
 
     @Override
-    public void execute(String args, Scanner scan, boolean isFile) {
+    public void execute(String args, Scanner scan, boolean isFile) throws IllegalParamException{
 
         try {
             int id = Integer.parseInt(args.trim());
             CollectionManager.removeById(id);
         } catch (NumberFormatException e) {
-            throw new NumberFormatException("Формат введенного id неверен. Введите целое число!");
+            throw new IllegalParamException("int");
         }
     }
 }

@@ -4,6 +4,7 @@ import managers.Commander;
 import managers.InteractiveModeManager;
 import managers.StandartConsole;
 
+import java.io.IOException;
 
 
 public class Main {
@@ -15,10 +16,14 @@ public class Main {
             console.println("Необходимо указать имя файла. Невозможно запустить приложение");
             System.exit(1);
         }
+        //String filename = "1.xml";
         String filename = args[0];
         try {
             CollectionManager.readCollection(filename);
-        } catch (Exception e) {
+        }catch (IOException warning){
+            console.printError(warning);
+            System.exit(1);
+        }catch (Exception e) {
             console.printError(e.toString());
         }
         now.interactiveMode();

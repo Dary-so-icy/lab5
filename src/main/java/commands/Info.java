@@ -1,5 +1,6 @@
 package commands;
 
+import exceptions.IllegalParamException;
 import managers.CollectionManager;
 
 import java.util.Scanner;
@@ -14,7 +15,8 @@ public class Info extends Command {
     }
 
     @Override
-    public void execute(String args, Scanner scan, boolean isFile) {
+    public void execute(String args, Scanner scan, boolean isFile) throws IllegalParamException{
+        if (!args.isBlank()) throw new IllegalParamException("*ничего*");
         if (CollectionManager.getCollection().isEmpty()){
             System.out.println("Коллекция пока что пуста. Тип коллекции: " + CollectionManager.getCollection().getClass());
         }

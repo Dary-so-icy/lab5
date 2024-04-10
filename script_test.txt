@@ -1,6 +1,7 @@
 info
-min_by_creation_date
+update_id 45
 filter_starts_with_name web
 print_field_ascending_author
 remove_by_id 1
 show
+execute_script 2_test.txt

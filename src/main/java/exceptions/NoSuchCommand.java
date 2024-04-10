@@ -2,7 +2,13 @@ package exceptions;
 import java.io.IOException;
 
 /**
- * Класс исключения для несуществующей команды
+ * Исключение, которое пробрасывается при вызове несуществующей команды
+ *
+ * @author darya
  */
 public class NoSuchCommand extends IOException {
+    @Override
+    public String toString() {
+        return "Нет такой команды";
+    }
 }
