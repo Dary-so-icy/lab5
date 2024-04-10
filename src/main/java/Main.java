@@ -16,7 +16,6 @@ public class Main {
             console.println("Необходимо указать имя файла. Невозможно запустить приложение");
             System.exit(1);
         }
-        //String filename = "1.xml";
         String filename = args[0];
         try {
             CollectionManager.readCollection(filename);
