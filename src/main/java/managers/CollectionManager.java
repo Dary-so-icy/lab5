@@ -12,7 +12,7 @@ import java.util.*;
  * @author darya
  */
 public class CollectionManager {
-    protected StandartConsole console;
+    protected StandardConsole console;
     protected static File file;
     private static HashSet<LabWork> collection = new HashSet<>();
     public static final Date initializationTime = new Date();
@@ -50,7 +50,7 @@ public class CollectionManager {
 
     public static void readCollection(String path) throws IOException{
         file = new File(path);
-        StandartConsole console = new StandartConsole();
+        StandardConsole console = new StandardConsole();
         if (!file.exists()) {
             if (!file.createNewFile()) {
                 throw new IOException();
@@ -64,11 +64,11 @@ public class CollectionManager {
         }
         try {
             Scanner fileReader = new Scanner(file);
-            String s = "";
+            StringBuilder s = new StringBuilder();
             while (fileReader.hasNextLine()) {
-                s= s + (fileReader.nextLine());
+                s.append(fileReader.nextLine());
             }
-            StringReader newFile = new StringReader(s);
+            StringReader newFile = new StringReader(s.toString());
 
             collection.clear();
 
@@ -83,7 +83,7 @@ public class CollectionManager {
 
     }
     public static void saveCollection(){
-        StandartConsole console = new StandartConsole();
+        StandardConsole console = new StandardConsole();
         String file_path = System.getenv("file_path");
         if (file_path == null || file_path.isEmpty())
             console.printError("Путь должен быть в переменных окружения в перменной 'file_path'");

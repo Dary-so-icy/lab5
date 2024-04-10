@@ -1,6 +1,6 @@
 package collection.Models;
 
-import managers.StandartConsole;
+import managers.StandardConsole;
 
 import java.util.Scanner;
 /**
@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public abstract class Model<T> {
 
-    protected StandartConsole console = new StandartConsole();
+    protected StandardConsole console = new StandardConsole();
 
 
     public abstract T build(Scanner scan, boolean isFile);

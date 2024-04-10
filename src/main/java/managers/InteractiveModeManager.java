@@ -2,6 +2,7 @@ package managers;
 
 import exceptions.IllegalParamException;
 import exceptions.NoSuchCommand;
+
 import java.util.Scanner;
 
 
@@ -11,33 +12,33 @@ import java.util.Scanner;
  * @author darya
  */
 public class InteractiveModeManager {
-    private final StandartConsole console;
+    private final StandardConsole console;
     private final Commander commander;
 
-    public InteractiveModeManager(StandartConsole console, Commander commandManager) {
+    public InteractiveModeManager(StandardConsole console, Commander commandManager) {
         this.console = console;
         this.commander = commandManager;
     }
 
     public void interactiveMode() {
-        Scanner userScanner = new Scanner(System.in); //&?
+        Scanner userScanner = new Scanner(System.in);
         while (true) {
             try {
                 if (!userScanner.hasNextLine()) {
                     System.exit(0);
                 }
 
-                String userCommand = userScanner.nextLine().trim() ;
+                String userCommand = userScanner.nextLine().trim();
                 var comm = userCommand.split(" ");
-                if(comm.length > 1) {
+                if (comm.length > 1) {
                     this.launch(comm[0], comm[1], userScanner, false);
-                }else{
+                } else {
                     this.launch(comm[0], "", userScanner, false);
                 }
                 commander.addToHistory(comm[0]);
             } catch (NoSuchCommand ex) {
                 console.printError(ex.toString());
-            }catch(IllegalParamException param){
+            } catch (IllegalParamException param) {
                 console.printError(param);
             } catch (Exception exception) {
                 console.printError(exception.getMessage());

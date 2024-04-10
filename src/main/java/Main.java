@@ -2,7 +2,7 @@
 import managers.CollectionManager;
 import managers.Commander;
 import managers.InteractiveModeManager;
-import managers.StandartConsole;
+import managers.StandardConsole;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) {
-        StandartConsole console = new StandartConsole();
+        StandardConsole console = new StandardConsole();
         InteractiveModeManager now = new InteractiveModeManager(console, new Commander());
         if (args.length == 0) {
             console.println("Необходимо указать имя файла. Невозможно запустить приложение");
@@ -19,10 +19,10 @@ public class Main {
         String filename = args[0];
         try {
             CollectionManager.readCollection(filename);
-        }catch (IOException warning){
+        } catch (IOException warning) {
             console.printError(warning);
             System.exit(1);
-        }catch (Exception e) {
+        } catch (Exception e) {
             console.printError(e.toString());
         }
         now.interactiveMode();

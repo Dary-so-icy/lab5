@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 /**
  * Класс команд и их истории
+ *
  * @author darya
  */
 
@@ -19,7 +20,8 @@ public class Commander {
     private static Map<String, Command> commands;
 
     public static ArrayList<String> history = new ArrayList<>();
-    public Commander(){
+
+    public Commander() {
         commands = new LinkedHashMap<>();
 
         commands.put("add", new Add());
@@ -45,7 +47,7 @@ public class Commander {
         if (command == null) throw new NoSuchCommand();
         try {
             command.execute(args.trim(), scan, isFile);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 

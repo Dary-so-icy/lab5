@@ -7,7 +7,7 @@ import lombok.Setter;
  * Класс с методами консоли и указателем на режим аботы программмы
  * @author darya
  */
-public class StandartConsole {
+public class StandardConsole {
     @Getter
     @Setter
     private static boolean fileMode = false;

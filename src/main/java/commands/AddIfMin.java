@@ -4,7 +4,7 @@ import collection.Models.AskLabWork;
 import collection.LabWork;
 import exceptions.IllegalParamException;
 import managers.CollectionManager;
-import managers.StandartConsole;
+import managers.StandardConsole;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -19,7 +19,7 @@ public class AddIfMin extends Command{
 
     @Override
     public void execute(String args, Scanner scan, boolean isFile) throws IllegalParamException{
-        StandartConsole console = new StandartConsole();
+        StandardConsole console = new StandardConsole();
         if (!args.isBlank()) throw new IllegalParamException("*ничего*");
         try {
             console.println("Создание объекта LabWork");
